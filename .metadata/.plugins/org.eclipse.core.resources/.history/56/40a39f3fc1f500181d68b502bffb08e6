@@ -275,7 +275,7 @@ public class CollegeDatabase implements Database{
 					count++;
 				}
 			}
-			else if (operator == Operator.UNDER) {
+			else if (operator.equals("under")) {
 				if (((Employee)entry[i]).getSalary() < salary) {
 					inRange[count] = entry[i];
 					count++;

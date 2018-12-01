@@ -28,7 +28,6 @@ public class DatabaseClient {
 //		database.separate(20, "over").print();
 		/*
 		 * NEXT: Correct String parameter 'type' to PersonType enum
-		 * Then continue testing
 		 */
 	}
 

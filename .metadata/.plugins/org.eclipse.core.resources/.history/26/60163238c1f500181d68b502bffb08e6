@@ -269,13 +269,13 @@ public class CollegeDatabase implements Database{
 		Person[] inRange = new Person[size];
 		int count = 0;
 		for (int i = 0; i < size; i++) {
-			if (operator == Operator.OVER){
+			if (operator.equals("over")){
 				if (((Employee)entry[i]).getSalary() > salary) {
 					inRange[count] = entry[i];
 					count++;
 				}
 			}
-			else if (operator == Operator.UNDER) {
+			else if (operator.equals("under")) {
 				if (((Employee)entry[i]).getSalary() < salary) {
 					inRange[count] = entry[i];
 					count++;

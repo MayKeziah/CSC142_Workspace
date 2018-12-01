@@ -10,4 +10,5 @@
 <fullyQualifiedTypeName name="people.Employee"/>
 <fullyQualifiedTypeName name="people.Student"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="database.CollegeDatabase.Operator"/>
 </qualifiedTypeNameHistroy>

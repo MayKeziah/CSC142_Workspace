@@ -25,12 +25,10 @@ public class CollegeDatabase implements Database{
 	//Has a value of -1 for any entry not found
 	final int NOT_FOUND = -1;
 	
-	//FIXME
 	public static enum PersonType{
 		EMPLOYEE, STUDENT
 	}
 	
-	//FIXME
 	public static enum Operator{
 		OVER, UNDER
 	}
@@ -245,17 +243,17 @@ public class CollegeDatabase implements Database{
 	 * 			Returns the new college database.
 	 **************************************************************************/
 	
-	public CollegeDatabase byGPA(double GPA, Operator operator) {
+	public CollegeDatabase byGPA(double GPA, String operator) {
 		Person[] inRange = new Person[size];
 		int count = 0;
 		for (int i = 0; i < size; i++) {
-			if (operator == Operator.OVER){
+			if (operator.equals("over")){
 				if (((Student)entry[i]).getGPA() > GPA) {
 					inRange[count] = entry[i];
 					count++;
 				}
 			}
-			else if (operator == Operator.UNDER) {
+			else if (operator.equals("under")) {
 				if (((Student)entry[i]).getGPA() < GPA) {
 					inRange[count] = entry[i];
 					count++;
@@ -265,17 +263,17 @@ public class CollegeDatabase implements Database{
 		return new CollegeDatabase(inRange, count);
 	}
 	
-	public CollegeDatabase bySalary(double salary, Operator operator) {
+	public CollegeDatabase bySalary(double salary, String operator) {
 		Person[] inRange = new Person[size];
 		int count = 0;
 		for (int i = 0; i < size; i++) {
-			if (operator == Operator.OVER){
+			if (operator.equals("over")){
 				if (((Employee)entry[i]).getSalary() > salary) {
 					inRange[count] = entry[i];
 					count++;
 				}
 			}
-			else if (operator == Operator.UNDER) {
+			else if (operator.equals("under")) {
 				if (((Employee)entry[i]).getSalary() < salary) {
 					inRange[count] = entry[i];
 					count++;
@@ -287,7 +285,7 @@ public class CollegeDatabase implements Database{
 	
 	/*************************************************************************FIXME
 	 * Create new database OR delete not add*/
-	public CollegeDatabase separate(String type, double num, Operator operator) throws IllegalArgumentException {
+	public CollegeDatabase separate(String type, double num, String operator) throws IllegalArgumentException {
 		CollegeDatabase ofType = this.separate(type);
 		CollegeDatabase inRange;
 		if (type.equals("Employee")) {
@@ -305,22 +303,22 @@ public class CollegeDatabase implements Database{
 	
 	/**************************************************************************
 	 * 		separate Method: creates a new database of Person objects with a specified age range.
-	 * 			Takes two parameters, a Person's age, and and an Operator (CollegeDatabase.Operator) "OVER" or "UNDER".
+	 * 			Takes two parameters, a Person's age, and a String operator ("over" or "under").
 	 * 			It then sorts through the current array of Person type, entry, 
 	 * 			and makes a new array full of Person objects that are over/under the specified range.
 	 * 			Returns a College Database of people of this age range.
 	 **************************************************************************/
-	public CollegeDatabase separate(int age, Operator operator) throws IllegalArgumentException{ //when .print() used, null to string error FIXME
+	public CollegeDatabase separate(int age, String operator) throws IllegalArgumentException{ //when .print() used, null to string error FIXME
 		Person[] inRange = new Person[size];
 		int count = 0;
 		for (int i = 0; i < size; i++) {
-			if (operator == Operator.OVER){
+			if (operator.equals("over")){
 				if (entry[i].getAge() > age) {
 					inRange[count] = entry[i];
 					count++;
 				}
 			}
-			else if (operator == Operator.UNDER) {
+			else if (operator.equals("under")) {
 				if (entry[i].getAge() < age) {
 					inRange[count] = entry[i];
 					count++;

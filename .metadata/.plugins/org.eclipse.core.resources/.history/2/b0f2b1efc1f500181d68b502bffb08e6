@@ -26,10 +26,7 @@ public class DatabaseClient {
 //		database.separate(20).print();
 		database.separate("Employee", 58000.0, Operator.OVER).print();
 //		database.separate(20, "over").print();
-		/*
-		 * NEXT: Correct String parameter 'type' to PersonType enum
-		 * Then continue testing
-		 */
+		
 	}
 
 }

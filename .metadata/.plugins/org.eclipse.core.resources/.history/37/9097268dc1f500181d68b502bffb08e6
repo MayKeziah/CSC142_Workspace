@@ -3,8 +3,6 @@ package database;
 import java.io.File;
 import java.io.IOException;
 
-import database.CollegeDatabase.Operator;
-
 public class DatabaseClient {
 
 	public static void main(String[] args) throws IOException {
@@ -24,12 +22,9 @@ public class DatabaseClient {
 //		database.separate("Employee").print();
 		System.out.println("MOOOOOOOOO");
 //		database.separate(20).print();
-		database.separate("Employee", 58000.0, Operator.OVER).print();
+		database.separate("Student", 3.0, "over").print();
 //		database.separate(20, "over").print();
-		/*
-		 * NEXT: Correct String parameter 'type' to PersonType enum
-		 * Then continue testing
-		 */
+		
 	}
 
 }
