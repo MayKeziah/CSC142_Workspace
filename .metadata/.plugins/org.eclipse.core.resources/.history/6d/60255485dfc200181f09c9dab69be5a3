@@ -1,0 +1,29 @@
+package first;
+
+public class Activity3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+	
+	public static void openDown(String[] args) {
+		System.out.println("  ______");
+		System.out.println(" /      \\");
+		System.out.println("/        \\);
+	}
+	
+	public static void openUp(String[] args) {
+		System.out.println("\\        /");
+		System.out.println(" \\______/");
+	}
+	
+	public static void lid(String[] args) {
+		System.out.println("+--------+");
+	}
+	
+	public static void stop(String[] args) {
+		System.out.println("|  STOP  |");
+	}
+
+}

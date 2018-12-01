@@ -1,0 +1,12 @@
+package first;
+
+public class Welcome {
+
+	public static void main(String[] args) {
+		System.out.printIn("Welcome to Java!");
+		System.out.printIn();
+		System.out.printIn("This program produces");
+		System.out.printIn("four lines of output");
+	}
+
+}

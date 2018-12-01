@@ -1,0 +1,35 @@
+package first;
+
+public class Activity3 {
+
+	public static void main() {
+		egg();
+
+	}
+	
+	public static void openDown() {
+		System.out.println("  ______");
+		System.out.println(" /      \\");
+		System.out.println("/        \\");
+	}
+	
+	public static void openUp() {
+		System.out.println("\\        /");
+		System.out.println(" \\______/");
+	}
+	
+	public static void lid() {
+		System.out.println("+--------+");
+	}
+	
+	public static void stop() {
+		System.out.println("|  STOP  |");
+	}
+	
+	public static void egg() {
+		openDown();
+		openUp();
+	}
+	}
+
+}

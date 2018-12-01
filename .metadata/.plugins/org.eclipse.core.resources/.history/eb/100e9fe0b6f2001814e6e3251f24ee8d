@@ -1,0 +1,9 @@
+package studyExercises;
+
+public class TestStuff {
+	public static void main(String[] args) {
+		int x = 2%7;
+		System.out.print(x);
+	}
+
+}

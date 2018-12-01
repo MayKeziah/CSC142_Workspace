@@ -1,0 +1,8 @@
+package studyExercises;
+
+public class TestStuff {
+	public static void main(String[] args) {
+		2%7;
+	}
+
+}

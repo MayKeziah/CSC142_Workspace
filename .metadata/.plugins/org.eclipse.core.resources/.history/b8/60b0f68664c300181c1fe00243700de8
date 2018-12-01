@@ -1,0 +1,53 @@
+package first;
+
+public class Activity3 {
+//this is a program that prints an 'egg', a 'teacup', a 'stopsign', and a 'hat'
+	public static void main(String[] args) {
+		egg();
+		teaCup();
+		stopSign();
+		hat();
+	}
+	
+	//This method prints a downward arch
+	public static void openDown() {
+		System.out.println("  ______");
+		System.out.println(" /      \\");
+		System.out.println("/        \\");
+	}
+	//this method prints an upward arch
+	public static void openUp() {
+		System.out.println("\\        /");
+		System.out.println(" \\______/");
+	}
+	//this method prints a particular line
+	public static void lid() {
+		System.out.println("+--------+");
+	}
+	//this method prints the mid-section of a stop-sign
+	public static void stop() {
+		System.out.println("|  STOP  |");
+	}
+	//Prints an egg
+	public static void egg() {
+		openDown();
+		openUp();
+	}
+	//Prints a teacup
+	public static void teaCup() {
+		openUp();
+		lid();
+	}
+	//Prints a stopsign
+	public static void stopSign() {
+		openDown();
+		stop();
+		openUp();
+	}
+	//Prints a hat
+	public static void hat() {
+		openDown();
+		lid();
+	}
+
+}
