@@ -2,9 +2,11 @@ package database;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 import database.CollegeDatabase.Operator;
 import database.CollegeDatabase.PersonType;
+import people.Person;
 
 public class DatabaseClient {
 
@@ -19,13 +21,37 @@ public class DatabaseClient {
 		+ File.separator +  "F18" 
 		+ File.separator + "College.txt";
 		
-		DatabaseStorage storage = new DatabaseStorage(fileLocation1);
-		CollegeDatabase database = storage.read();
-		database.print();
+		String fileLocation2 = File.separator + "C:"
+		+ File.separator + "Users"
+		+ File.separator + "E" 
+		+ File.separator + "Documents" 
+		+ File.separator + "School"
+		+ File.separator + "Fall 2018" 
+		+ File.separator + "CSC_142" 
+		+ File.separator +  "F18" 
+		+ File.separator + "TestMe.txt";
+		
+		DatabaseStorage input = new DatabaseStorage(fileLocation1);
+		CollegeDatabase database = input.read();
+		DatabaseStorage output = new DatabaseStorage(fileLocation2);
+//		CollegeDatabase myTest = output.read();
+//		myTest.print();
+//		database.print();
 //		database.separate("Employee").print();
 		System.out.println("X X X X X X X X X X X X X X X X X");
 //		database.separate(20).print();
-		database.separate(PersonType.EMPLOYEE, 58000.0, Operator.OVER).print();
+		CollegeDatabase myTest = database.separate(PersonType.EMPLOYEE, 58000.0, Operator.OVER);
+		System.out.println(Arrays.toString(database.getDatabase()));
+		System.out.println(database.getSize());
+//		Person myGuy = database.search("Holden Leuty");
+//		int guySpot = database.findLocation("Holden Leuty");
+//		System.out.println("Location: " + guySpot);
+//		System.out.println(database.get(guySpot).toString());
+//		System.out.println(myGuy.toString());
+//		System.out.println("HHHHH\n" + Arrays.toString(database.getDatabase()));
+		
+//		output.writeCommaSeperated(myTest);
+//		output.write(myTest);
 //		database.separate(20, "over").print();
 		/*
 		 * NEXT: Correct / add headers as needed

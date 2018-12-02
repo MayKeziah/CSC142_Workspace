@@ -125,16 +125,7 @@ public class CollegeDatabase implements Database{
 	 **************************************************************************/
 	public boolean delete(String name) {
 		int index = this.findLocation(name);
-		if (index == NOT_FOUND) {
-			return false;
-		}
-		else {
-			entry[index] = null;
-			for (int i = index; i < size; i++) {
-				entry[i] = entry[i + 1];
-			}
-			return true;
-		}
+		return this.delete(index);
 	}
 	
 	/**************************************************************************
