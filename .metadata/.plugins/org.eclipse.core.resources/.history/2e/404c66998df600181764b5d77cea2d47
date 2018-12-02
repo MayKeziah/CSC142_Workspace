@@ -54,12 +54,13 @@ public class DatabaseStorage {
 	 *******************************************************************************/
 	public CollegeDatabase read() throws IOException {
 		Scanner input = new Scanner(file);
-		CollegeDatabase database = new CollegeDatabase(25); 
+		CollegeDatabase database = new CollegeDatabase(20); // FIXME BACK TO 25
 		while (input.hasNextLine()) {
 			String newLine = input.nextLine();
 			database.add(parsePerson(newLine));
 		}
 		input.close();
+		System.out.println(database.getDatabase().length);
 		return database;
 	}
 

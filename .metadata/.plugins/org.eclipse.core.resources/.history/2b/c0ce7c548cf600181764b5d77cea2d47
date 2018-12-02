@@ -38,15 +38,11 @@ public class DatabaseClient {
 //		myTest.print();
 //		database.print();
 //		database.separate("Employee").print();
-		CollegeDatabase test1 = database.separate(PersonType.EMPLOYEE);
-		CollegeDatabase test2 = database.separate(PersonType.STUDENT);
 		System.out.println("X X X X X X X X X X X X X X X X X");
-		test1.add(test2);
-		test1.print();
 //		database.separate(20).print();
-//		CollegeDatabase myTest = database.separate(PersonType.EMPLOYEE, 58000.0, Operator.OVER);
-//		System.out.println(Arrays.toString(database.getDatabase()));
-//		System.out.println(database.getSize());
+		CollegeDatabase myTest = database.separate(PersonType.EMPLOYEE, 58000.0, Operator.OVER);
+		System.out.println(Arrays.toString(database.getDatabase()));
+		System.out.println(database.getSize());
 //		Person myGuy = database.search("Holden Leuty");
 //		int guySpot = database.findLocation("Holden Leuty");
 //		System.out.println("Location: " + guySpot);

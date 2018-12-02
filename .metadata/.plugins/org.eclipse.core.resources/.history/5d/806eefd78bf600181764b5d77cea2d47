@@ -25,6 +25,15 @@ public class CollegeDatabase implements Database{
 	//Has a value of -1 for any entry not found
 	final int NOT_FOUND = -1;
 	
+	//FIXME
+	public static enum PersonType{
+		EMPLOYEE, STUDENT
+	}
+	
+	//FIXME
+	public static enum Operator{
+		OVER, UNDER
+	}
 	
 	/**************************************************************************
 	 * 		Constructor: 
@@ -80,8 +89,16 @@ public class CollegeDatabase implements Database{
 			size++;
 		}
 		else {
-			System.out.println("Add method failed to execute, name already exists. "
-					+ "The following person was NOT added to the database:\n" + person.toString() + "END");
+			System.out.println("\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n"
+					+ "Add method failed to execute, name already exists. "
+					+ "\nThe following person was NOT added to the database:\n" + person.toString() 
+					+ "END ADD METHOD FAILED MESSEGE"
+					+ "\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
+		}
+	}
+	public void add(Person[] data) {
+		for (int i = 0; i < data.size; i++){
+			
 		}
 	}
 	
@@ -100,6 +117,7 @@ public class CollegeDatabase implements Database{
 			for (int i = index; i < size; i++) {
 				entry[i] = entry[i + 1];
 			}
+			size--;
 			return true;
 		}
 	}
@@ -112,16 +130,7 @@ public class CollegeDatabase implements Database{
 	 **************************************************************************/
 	public boolean delete(String name) {
 		int index = this.findLocation(name);
-		if (index == NOT_FOUND) {
-			return false;
-		}
-		else {
-			entry[index] = null;
-			for (int i = index; i < size; i++) {
-				entry[i] = entry[i + 1];
-			}
-			return true;
-		}
+		return this.delete(index);
 	}
 	
 	/**************************************************************************
@@ -232,60 +241,84 @@ public class CollegeDatabase implements Database{
 	 * 			Returns the new college database.
 	 **************************************************************************/
 	
-	/*************************************************************************FIXME
-	 * Create new database*/
-	public CollegeDatabase separate(String type, double num, String operator) throws IllegalArgumentException {
-		CollegeDatabase inRange = this.separate(type);
-		System.out.println(inRange.toString());
-		for (int i = 0; i < inRange.size; i++) {
-			if ((type.equals("Employee")) && (operator.equals("over"))) {
-				if (((Employee) inRange.getDatabase()[i]).getSalary() <= num) {
-					inRange.delete(i);
+	public CollegeDatabase byGPA(double GPA, Operator operator) {
+		Person[] inRange = new Person[size];
+		int count = 0;
+		for (int i = 0; i < size; i++) {
+			if (operator == Operator.OVER){
+				if (((Student)entry[i]).getGPA() > GPA) {
+					inRange[count] = entry[i];
+					count++;
 				}
 			}
-			else if ((type.equals("Employee")) && (operator.equals("under"))) {
-				if (((Employee) inRange.getDatabase()[i]).getSalary() < num) {
-					inRange.add(entry[i]);
+			else if (operator == Operator.UNDER) {
+				if (((Student)entry[i]).getGPA() < GPA) {
+					inRange[count] = entry[i];
+					count++;
 				}
-			}
-			else if ((type.equals("Student")) && (operator.equals("over"))) {
-				if (((Student) inRange.getDatabase()[i]).getGPA() > num) {
-					inRange.add(entry[i]);
-				}
-			}
-			else if ((type.equals("Student")) && (operator.equals("under"))) {
-				if (((Student) inRange.getDatabase()[i]).getGPA() < num) {
-					inRange.add(entry[i]);
-				}
-			}
-			else {
-				throw new IllegalArgumentException("Invalid operator \"" + operator + "\". Must be \"over\" or \"under\".");
 			}
 		}
-		
+		return new CollegeDatabase(inRange, count);
+	}
+	
+	public CollegeDatabase bySalary(double salary, Operator operator) {
+		Person[] inRange = new Person[size];
+		int count = 0;
+		for (int i = 0; i < size; i++) {
+			if (operator == Operator.OVER){
+				if (((Employee)entry[i]).getSalary() > salary) {
+					inRange[count] = entry[i];
+					count++;
+				}
+			}
+			else if (operator == Operator.UNDER) {
+				if (((Employee)entry[i]).getSalary() < salary) {
+					inRange[count] = entry[i];
+					count++;
+				}
+			}
+		}
+		return new CollegeDatabase(inRange, count);
+	}
+	
+	/*************************************************************************FIXME
+	 * Create new database OR delete not add*/
+	public CollegeDatabase separate(PersonType type, double num, Operator operator) throws IllegalArgumentException {
+		CollegeDatabase ofType = this.separate(type);
+		CollegeDatabase inRange;
+		if (type == PersonType.EMPLOYEE) {
+			inRange = ofType.bySalary(num, operator);
+		}
+		else if (type == PersonType.STUDENT) {
+			inRange = ofType.byGPA(num, operator);
+		}
+		else {
+			throw new IllegalArgumentException("Type must be \"Employee\" or \"Student\". Type given: " + type + ".");
+		}
 		return inRange;
+	
 	}
 	
 	/**************************************************************************
 	 * 		separate Method: creates a new database of Person objects with a specified age range.
-	 * 			Takes two parameters, a Person's age, and a String operator ("over" or "under").
+	 * 			Takes two parameters, a Person's age, and and an Operator (CollegeDatabase.Operator) "OVER" or "UNDER".
 	 * 			It then sorts through the current array of Person type, entry, 
 	 * 			and makes a new array full of Person objects that are over/under the specified range.
 	 * 			Returns a College Database of people of this age range.
 	 **************************************************************************/
-	public CollegeDatabase separate(int age, String operator) throws IllegalArgumentException{
+	public CollegeDatabase separate(int age, Operator operator) throws IllegalArgumentException{ //when .print() used, null to string error FIXME
 		Person[] inRange = new Person[size];
 		int count = 0;
 		for (int i = 0; i < size; i++) {
-			if (operator.equals("over")){
+			if (operator == Operator.OVER){
 				if (entry[i].getAge() > age) {
-					inRange[i] = entry[i];
+					inRange[count] = entry[i];
 					count++;
 				}
 			}
-			else if (operator.equals("under")) {
+			else if (operator == Operator.UNDER) {
 				if (entry[i].getAge() < age) {
-					inRange[i] = entry[i];
+					inRange[count] = entry[i];
 					count++;
 				}
 			}
@@ -304,10 +337,10 @@ public class CollegeDatabase implements Database{
 	 * 			of either "Employee" or "Student", as specified by the parameter.
 	 * 			It then returns a CollegeDatabase of the array of sub-type objects.
 	 **************************************************************************/
-	public CollegeDatabase separate(String type) throws IllegalArgumentException{
+	public CollegeDatabase separate(PersonType type) throws IllegalArgumentException{
 		Person[] typeData = new Person[size];
 		int count = 0;
-		if (type.equals("Employee")) {
+		if (type == PersonType.EMPLOYEE) {
 			for (int i = 0; i < this.size; i++) {
 				if (entry[i] instanceof Employee) {
 					typeData[count] = entry[i]; 
@@ -315,7 +348,7 @@ public class CollegeDatabase implements Database{
 				}
 			}
 		}
-		else if (type.equals("Student")) {
+		else if (type == PersonType.STUDENT) {
 			for (int i = 0; i < this.size; i++) {
 				if (entry[i] instanceof Student) {
 					typeData[count] = entry[i]; 
@@ -325,7 +358,7 @@ public class CollegeDatabase implements Database{
 		}
 		else {
 			throw new IllegalArgumentException("Invalid entry \"" + type + "\". Database type "
-												+ "must be \"Student\" or \"Employee\", please try again");
+												+ "must be PersonType.STUDENT or PersonType.EMPLOYEE, please try again");
 		}
 		return new CollegeDatabase(typeData, count);
 	}
@@ -339,6 +372,7 @@ public class CollegeDatabase implements Database{
 			}
 		}
 		catch (NullPointerException exception) {
+			System.out.println("size: " + this.size + databaseString); //delete test FIXME
 			System.out.println("Cannot resolve null to a string.");
 		}
 		return databaseString;

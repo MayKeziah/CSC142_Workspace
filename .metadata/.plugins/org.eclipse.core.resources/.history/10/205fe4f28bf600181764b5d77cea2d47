@@ -98,9 +98,7 @@ public class CollegeDatabase implements Database{
 	}
 	public void add(CollegeDatabase data) {
 		for (int i = 0; i < data.size; i++){
-			if (data.entry[i] instanceof Person) {
-				this.add(data.entry[i]);
-			}
+			
 		}
 	}
 	
