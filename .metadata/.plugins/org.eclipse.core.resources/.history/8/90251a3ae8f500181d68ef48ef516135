@@ -362,7 +362,7 @@ public class CollegeDatabase implements Database{
 		}
 		else {
 			throw new IllegalArgumentException("Invalid entry \"" + type + "\". Database type "
-												+ "must be PersonType.STUDENT or PersonType.EMPLOYEE, please try again");
+												+ "must be \"Student\" or \"Employee\", please try again");
 		}
 		return new CollegeDatabase(typeData, count);
 	}

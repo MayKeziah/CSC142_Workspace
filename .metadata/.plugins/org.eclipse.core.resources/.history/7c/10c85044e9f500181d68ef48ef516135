@@ -86,8 +86,7 @@ public class DatabaseStorage {
 			writer.println(data.toString() + "\n");
 		}
 		else {
-			writer.close();
-			throw new IOException("File invalid, cannot write to invalid file.");
+			System.out.println("File invalid, cannot write to invalid file.");
 		}
 		writer.close();
 	}

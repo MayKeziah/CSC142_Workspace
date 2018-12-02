@@ -341,10 +341,10 @@ public class CollegeDatabase implements Database{
 	 * 			of either "Employee" or "Student", as specified by the parameter.
 	 * 			It then returns a CollegeDatabase of the array of sub-type objects.
 	 **************************************************************************/
-	public CollegeDatabase separate(PersonType type) throws IllegalArgumentException{
+	public CollegeDatabase separate(String type) throws IllegalArgumentException{
 		Person[] typeData = new Person[size];
 		int count = 0;
-		if (type == PersonType.EMPLOYEE) {
+		if (type.equals("Employee")) {
 			for (int i = 0; i < this.size; i++) {
 				if (entry[i] instanceof Employee) {
 					typeData[count] = entry[i]; 
@@ -352,7 +352,7 @@ public class CollegeDatabase implements Database{
 				}
 			}
 		}
-		else if (type == PersonType.STUDENT) {
+		else if (type.equals("Student")) {
 			for (int i = 0; i < this.size; i++) {
 				if (entry[i] instanceof Student) {
 					typeData[count] = entry[i]; 
@@ -362,7 +362,7 @@ public class CollegeDatabase implements Database{
 		}
 		else {
 			throw new IllegalArgumentException("Invalid entry \"" + type + "\". Database type "
-												+ "must be PersonType.STUDENT or PersonType.EMPLOYEE, please try again");
+												+ "must be \"Student\" or \"Employee\", please try again");
 		}
 		return new CollegeDatabase(typeData, count);
 	}
