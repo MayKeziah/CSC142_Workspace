@@ -192,7 +192,6 @@ public class CollegeDatabase implements Database{
 			return true;
 		}
 	}
-	
 	/**************************************************************************
 	 * 		delete Method: deletes a specific Person from the database.
 	 * 			Takes one parameter, a String object representing a Person's name. 
@@ -205,19 +204,6 @@ public class CollegeDatabase implements Database{
 		return this.delete(index);
 	}
 	
-	/**************************************************************************
-	 * 		deleteDatabase Method: deletes a specific section from the database.
-	 * 			Takes one parameter, a CollegeDatabase object. 
-	 * 			it deletes each entry from the passed database from this database
-	 * 			and the following entries are shifted to fill the deleted
-	 * 			location.	
-	 **************************************************************************/
-	public void deleteDatabase(CollegeDatabase separatedData) {
-		for (int i = 0; i < separatedData.size; i++) {
-			this.delete(separatedData.entry[i].getName());
-		}
-	}
-
 	/**************************************************************************
 	 * 		expand Method: expands database size to add more entries when full. 
 	 * 			Takes no parameters.
@@ -288,6 +274,12 @@ public class CollegeDatabase implements Database{
 		Person toReturn = get(findLocation(name));
 		this.delete(findLocation(name));
 		return toReturn;
+	}
+	
+	public void deleteDatabase(CollegeDatabase separatedData) {
+		for (int i = 0; i < separatedData.size; i++) {
+			this.delete(separatedData.entry[i].getName());
+		}
 	}
 	
 	/**************************************************************************
