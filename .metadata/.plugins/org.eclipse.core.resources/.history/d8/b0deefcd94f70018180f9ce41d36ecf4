@@ -277,8 +277,7 @@ public class CollegeDatabase implements Database{
 	}
 	
 	/**************************************************************************
-	 * 		print Method: Prints information about all Person objects in 
-	 * 					  database to console.
+	 * 		print Method: Prints information about all Person objects in database to console.
 	 * 			Takes no parameters.
 	 * 			Prints information about every Person in the database.
 	 **************************************************************************/

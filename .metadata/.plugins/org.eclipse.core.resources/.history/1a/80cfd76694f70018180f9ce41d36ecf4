@@ -263,22 +263,13 @@ public class CollegeDatabase implements Database{
 		return size;
 	}
 	
-	/**************************************************************************
-	 * 		pop Method: Gets information about a person while deleting them 
-	 *					from this database.
-	 * 			Takes one parameter, a String name of the Person Object.
-	 * 			Returns the person object with that name and deletes them from 
-	 * 			this database.		
-	 **************************************************************************/
 	public Person pop(String name) {
 		Person toReturn = get(findLocation(name));
 		this.delete(findLocation(name));
-		return toReturn;
 	}
 	
 	/**************************************************************************
-	 * 		print Method: Prints information about all Person objects in 
-	 * 					  database to console.
+	 * 		print Method: Prints information about all Person objects in database to console.
 	 * 			Takes no parameters.
 	 * 			Prints information about every Person in the database.
 	 **************************************************************************/
