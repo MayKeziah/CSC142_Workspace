@@ -17,7 +17,6 @@ import people.Student;
  * 			write, and understand files across several computer platforms. 								
  ***********************************************************************************/
 public class DatabaseStorage {
-	//A file object
 	private File file;
 	
 	public DatabaseStorage(String filePath) {

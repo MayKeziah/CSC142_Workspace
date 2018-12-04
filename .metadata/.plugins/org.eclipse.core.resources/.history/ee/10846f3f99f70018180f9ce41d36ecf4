@@ -13,17 +13,15 @@ import people.Student;
 /***********************************************************************************
  * 		DatabaseStorage Class: 												
  * 			This class manages the file input and output for a Database object 
- * 			and for any other classes in the program. It is able to read, 
+ * 			and for any other classes in the program. It will be able to read, 
  * 			write, and understand files across several computer platforms. 								
  ***********************************************************************************/
 public class DatabaseStorage {
-	//A file object
 	private File file;
 	
 	public DatabaseStorage(String filePath) {
 		setFile(filePath);
 	}
-	
 	
 	/*******************************************************************************
 	 * 		parsePerson Method: Returns an object compatible with a person object
