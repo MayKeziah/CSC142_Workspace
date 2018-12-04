@@ -45,9 +45,6 @@ public class DatabaseClient {
 //		test1.print();
 //		database.separate(20).print();
 		CollegeDatabase myTest = database.separate(PersonType.EMPLOYEE, 58000.0, Operator.OVER);
-//		Person tryMe = myTest.pop("Jessup Wingo");
-		myTest.printCommaSeparated();
-//		System.out.println(tryMe.toFile());
 //		System.out.println(Arrays.toString(database.getDatabase()));
 //		System.out.println(database.getSize());
 //		Person myGuy = database.search("Holden Leuty");
