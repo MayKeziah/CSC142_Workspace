@@ -286,13 +286,6 @@ public class CollegeDatabase implements Database{
 		System.out.println(this.toString());
 	}
 	
-	/**************************************************************************
-	 * 		printCommaSeparated Method: Prints information about all Person 
-	 * 									objects in database to console.
-	 * 			Takes no parameters.
-	 * 			Prints information about every Person in the database comma 
-	 * 			separated by accessing toFile method for each index.
-	 **************************************************************************/
 	public void printCommaSeparated() {
 		System.out.println(this.toFile());
 	}
