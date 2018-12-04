@@ -407,34 +407,12 @@ public class CollegeDatabase implements Database{
 	}
 	
 	/********************************************************************
-	 * 		toFile Method: creates a string of comma separated information
-	 * 					   about Person's in this database.
-	 * 			Accesses the toFile() method of every person object in
-	 * 			this database.											
-	 * 			Returns a string representation of the database of Person 
-	 * 			objects comma separated.									
-	 ********************************************************************/	
-	public String toFile() throws NullPointerException{
-		String databaseString = "";
-		for (int i = 0; i < size; i++) {
-			try{
-				databaseString += entry[i].toFile();
-			}
-			catch(NullPointerException exception){
-				System.out.println("Cannot resolve null to a string.");
-			}
-		}
-		return databaseString;
-	}
-	
-	/********************************************************************
 	 * 		toString Method: overrides Object.toString() 	
 	 * 			Accesses the toString() method of every person object in
 	 * 			this database.											
 	 * 			Returns a string representation of the database of Person 
 	 * 			objects.									
-	 ********************************************************************/	
-	public String toString() throws NullPointerException{
+	 ********************************************************************/	public String toString() throws NullPointerException{
 		String databaseString = "";
 		try{
 			for (int i = 0; i < size; i++) {

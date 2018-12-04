@@ -406,25 +406,11 @@ public class CollegeDatabase implements Database{
 		return new CollegeDatabase(typeData, count);
 	}
 	
-	/********************************************************************
-	 * 		toFile Method: creates a string of comma separated information
-	 * 					   about Person's in this database.
-	 * 			Accesses the toFile() method of every person object in
-	 * 			this database.											
-	 * 			Returns a string representation of the database of Person 
-	 * 			objects comma separated.									
-	 ********************************************************************/	
 	public String toFile() throws NullPointerException{
 		String databaseString = "";
 		for (int i = 0; i < size; i++) {
-			try{
-				databaseString += entry[i].toFile();
-			}
-			catch(NullPointerException exception){
-				System.out.println("Cannot resolve null to a string.");
-			}
+			databaseString += entry[i].toFile();
 		}
-		return databaseString;
 	}
 	
 	/********************************************************************

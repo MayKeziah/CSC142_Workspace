@@ -409,10 +409,10 @@ public class CollegeDatabase implements Database{
 	/********************************************************************
 	 * 		toFile Method: creates a string of comma separated information
 	 * 					   about Person's in this database.
-	 * 			Accesses the toFile() method of every person object in
+	 * 			Accesses the toString() method of every person object in
 	 * 			this database.											
 	 * 			Returns a string representation of the database of Person 
-	 * 			objects comma separated.									
+	 * 			objects.									
 	 ********************************************************************/	
 	public String toFile() throws NullPointerException{
 		String databaseString = "";
