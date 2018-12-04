@@ -25,12 +25,12 @@ public class CollegeDatabase implements Database{
 	//Has a value of -1 for any entry not found
 	final int NOT_FOUND = -1;
 	
-	//FIXME
+	//To specify sub-type of Person object
 	public static enum PersonType{
 		EMPLOYEE, STUDENT
 	}
 	
-	//FIXME
+	//To specify if a range is meant to be over or under a given number
 	public static enum Operator{
 		OVER, UNDER
 	}
@@ -47,7 +47,7 @@ public class CollegeDatabase implements Database{
 	/**************************************************************************
 	 * 		Constructor: 
 	 * 			Takes arrays maximum size as an integer and initializes 
-	 * 			the count (size) to zero. The array of PErson objects 
+	 * 			the count (size) to zero. The array of Person objects 
 	 * 			is initialized here.									
 	 **************************************************************************/
 	public CollegeDatabase(int capacity) {
@@ -96,6 +96,14 @@ public class CollegeDatabase implements Database{
 					+ "\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
 		}
 	}
+	
+	/**************************************************************************
+	 * 		add Method: adds information from another database to this database.
+	 * 			Takes one parameter, a CollegeDatabase, and adds the content of 
+	 * 			its array to this database. Does not allow duplicate names. 
+	 * 			when Database is too full, add expands it to accommodate 
+	 * 			new entries.									
+	 **************************************************************************/
 	public void add(CollegeDatabase data) {
 		for (int i = 0; i < data.size; i++){
 			if (data.entry[i] instanceof Person) {
@@ -104,6 +112,67 @@ public class CollegeDatabase implements Database{
 		}
 	}
 	
+	/**************************************************************************
+	 * 		byGPA Method: creates a new database of Person objects with a GPA 
+	 * 					  in a specified range.
+	 * 			Takes 2 parameters, a double representing a Student's GPA,  
+	 * 			and an operator ("over" or "under"). 
+	 * 			It then sorts through the current array of Person type, entry, 
+	 * 			and makes a new CollegeDatabase full of Person objects that have 
+	 * 			a GPA in the specified range.
+	 * 			Returns the new college database.
+	 **************************************************************************/
+	
+	public CollegeDatabase byGPA(double GPA, Operator operator) {
+		Person[] inRange = new Person[size];
+		int count = 0;
+		for (int i = 0; i < size; i++) {
+			if (operator == Operator.OVER){
+				if (((Student)entry[i]).getGPA() > GPA) {
+					inRange[count] = entry[i];
+					count++;
+				}
+			}
+			else if (operator == Operator.UNDER) {
+				if (((Student)entry[i]).getGPA() < GPA) {
+					inRange[count] = entry[i];
+					count++;
+				}
+			}
+		}
+		return new CollegeDatabase(inRange, count);
+	}
+
+	/**************************************************************************
+	 * 		bySalary Method: creates a new database of Person objects with a  
+	 * 					 	 salary in a specified range.
+	 * 			Takes 2 parameters, a double representing an Employee's salary,  
+	 * 			and an operator ("over" or "under"). 
+	 * 			It then sorts through the current array of Person type, entry, 
+	 * 			and makes a new CollegeDatabase full of Person objects that have 
+	 * 			a salary in the specified range.
+	 * 			Returns the new college database.
+	 **************************************************************************/
+	public CollegeDatabase bySalary(double salary, Operator operator) {
+		Person[] inRange = new Person[size];
+		int count = 0;
+		for (int i = 0; i < size; i++) {
+			if (operator == Operator.OVER){
+				if (((Employee)entry[i]).getSalary() > salary) {
+					inRange[count] = entry[i];
+					count++;
+				}
+			}
+			else if (operator == Operator.UNDER) {
+				if (((Employee)entry[i]).getSalary() < salary) {
+					inRange[count] = entry[i];
+					count++;
+				}
+			}
+		}
+		return new CollegeDatabase(inRange, count);
+	}
+
 	/**************************************************************************
 	 * 		delete Method: deletes a specific Person from the database.
 	 * 			Takes one parameter, an integer representing the location 
@@ -125,9 +194,9 @@ public class CollegeDatabase implements Database{
 	}
 	/**************************************************************************
 	 * 		delete Method: deletes a specific Person from the database.
-	 * 			Takes one parameter, a Person object. It uses the name to
-	 * 			find the location in the database of the entry to delete
-	 * 			and the following entries are shifted to fill the deleted
+	 * 			Takes one parameter, a String object representing a Person's name. 
+	 * 			It uses the name to find the location in the database of the entry 
+	 * 			to delete and the following entries are shifted to fill the deleted
 	 * 			location.	
 	 **************************************************************************/
 	public boolean delete(String name) {
@@ -152,11 +221,11 @@ public class CollegeDatabase implements Database{
 	}
 	
 	/**************************************************************************
-	 * 		findLocation Method: Find the location of a name/age/salary/subtype in the database. 
-	 * 			Takes one parameter, a string/int/double/subtype of the person's name/age/salary/subtype.
+	 * 		findLocation Method: Find the location of a name in the database. 
+	 * 			Takes one parameter, a string of the person's name.
 	 * 			Finds and returns the index at which that person is located 
 	 * 			in the database.	
-	 * 			If the name/age/salary/subtype is not found, it returns the value NOT_FOUND (-1).			
+	 * 			If the name is not found, it returns the value NOT_FOUND (-1).			
 	 **************************************************************************/
 	public int findLocation(String name) {
 		for (int i = 0; i < size; i++) {
@@ -194,7 +263,11 @@ public class CollegeDatabase implements Database{
 		return size;
 	}
 	
-	/******************************************************************FIXME*/
+	/**************************************************************************
+	 * 		print Method: Prints information about all Person objects in database to console.
+	 * 			Takes no parameters.
+	 * 			Prints information about every Person in the database.
+	 **************************************************************************/
 	public void print() {
 		System.out.println(this.toString());
 	}
@@ -205,8 +278,11 @@ public class CollegeDatabase implements Database{
 	 * 			If found, it returns the Person's information. 
 	 * 			If not found, it returns a "Person not in Database" statement.
 	 **************************************************************************/
-	public Person search(String name) {
+	public Person search(String name) throws IllegalArgumentException{
 		int personPosition = this.findLocation(name);
+		if (personPosition == -1) {
+			throw new IllegalArgumentException(name + "was not found in the database.");
+		}
 		return entry[personPosition];
 	}
 
@@ -234,57 +310,18 @@ public class CollegeDatabase implements Database{
 	}
 	
 	/**************************************************************************
-	 * 		separate Method: creates a new database of Person objects with a specified age.
-	 * 			Takes 3 parameters, a Person's sub-type, a double (salary or GPA), 
-	 * 			and an operator ("over" or "under"). 
+	 * 		separate Method: creates a new database of Person objects with a 
+	 * 						 GPA or Salary (depending on specified sub-type) 
+	 * 						 in a specified range.
+	 * 			Takes 3 parameters, a Person's sub-type, a double (representing 
+	 * 			either a GPA or Salary), and an Operator (CollegeDatabase.Operator)
+	 * 			"OVER" or "UNDER" representing the range direction in relation 
+	 * 			to the double. 
 	 * 			It then sorts through the current array of Person type, entry, 
-	 * 			and makes a new CollegeDatabase full of Person objects that have 
-	 * 			data fields in the specified range.
-	 * 			Returns the new college database.
+	 * 			and makes a new array full of Person objects that have the 
+	 * 			data field "GPA" or "salary" in the specified range.
+	 * 			Returns a College Database of people this age.
 	 **************************************************************************/
-	
-	public CollegeDatabase byGPA(double GPA, Operator operator) {
-		Person[] inRange = new Person[size];
-		int count = 0;
-		for (int i = 0; i < size; i++) {
-			if (operator == Operator.OVER){
-				if (((Student)entry[i]).getGPA() > GPA) {
-					inRange[count] = entry[i];
-					count++;
-				}
-			}
-			else if (operator == Operator.UNDER) {
-				if (((Student)entry[i]).getGPA() < GPA) {
-					inRange[count] = entry[i];
-					count++;
-				}
-			}
-		}
-		return new CollegeDatabase(inRange, count);
-	}
-	
-	public CollegeDatabase bySalary(double salary, Operator operator) {
-		Person[] inRange = new Person[size];
-		int count = 0;
-		for (int i = 0; i < size; i++) {
-			if (operator == Operator.OVER){
-				if (((Employee)entry[i]).getSalary() > salary) {
-					inRange[count] = entry[i];
-					count++;
-				}
-			}
-			else if (operator == Operator.UNDER) {
-				if (((Employee)entry[i]).getSalary() < salary) {
-					inRange[count] = entry[i];
-					count++;
-				}
-			}
-		}
-		return new CollegeDatabase(inRange, count);
-	}
-	
-	/*************************************************************************FIXME
-	 * Create new database OR delete not add*/
 	public CollegeDatabase separate(PersonType type, double num, Operator operator) throws IllegalArgumentException {
 		CollegeDatabase ofType = this.separate(type);
 		CollegeDatabase inRange;
@@ -302,13 +339,16 @@ public class CollegeDatabase implements Database{
 	}
 	
 	/**************************************************************************
-	 * 		separate Method: creates a new database of Person objects with a specified age range.
-	 * 			Takes two parameters, a Person's age, and and an Operator (CollegeDatabase.Operator) "OVER" or "UNDER".
-	 * 			It then sorts through the current array of Person type, entry, 
-	 * 			and makes a new array full of Person objects that are over/under the specified range.
-	 * 			Returns a College Database of people of this age range.
+	 * 		separate Method: creates a new database of Person objects with a 
+	 * 						 specified age range.
+	 * 			Takes two parameters, a Person's age, and and an Operator 
+	 * 			(CollegeDatabase.Operator) "OVER" or "UNDER". It then sorts 
+	 * 			through the current array of Person type, entry, and makes a 
+	 * 			new array full of Person objects that are over/under the 
+	 * 			specified range.
+	 * 			Returns a College Database of Person objects in this age range.
 	 **************************************************************************/
-	public CollegeDatabase separate(int age, Operator operator) throws IllegalArgumentException{ //when .print() used, null to string error FIXME
+	public CollegeDatabase separate(int age, Operator operator) throws IllegalArgumentException{
 		Person[] inRange = new Person[size];
 		int count = 0;
 		for (int i = 0; i < size; i++) {
@@ -333,7 +373,8 @@ public class CollegeDatabase implements Database{
 	
 	/**************************************************************************
 	 * 		separate Method: creates a new database of a specified sub-type.
-	 * 			Takes one parameter, a string of a sub-type ("Employee" or "Student"). 
+	 * 			Takes one parameter, a PersonType (CollegeDatabase.PersonType)
+	 * 			"EMPLOYEE" or "STUDENT". 
 	 * 			It then sorts through the current array of Person type, entry, 
 	 * 			and makes a new array full of Person objects that are instances 
 	 * 			of either "Employee" or "Student", as specified by the parameter.
@@ -358,15 +399,16 @@ public class CollegeDatabase implements Database{
 				}
 			}
 		}
-		else {
-			throw new IllegalArgumentException("Invalid entry \"" + type + "\". Database type "
-												+ "must be PersonType.STUDENT or PersonType.EMPLOYEE, please try again");
-		}
 		return new CollegeDatabase(typeData, count);
 	}
 	
-	/******************************************************************FIXME*/
-	public String toString() throws NullPointerException{
+	/********************************************************************
+	 * 		toString Method: overrides Object.toString() 	
+	 * 			Accesses the toString() method of every person object in
+	 * 			this database.											
+	 * 			Returns a string representation of the database of Person 
+	 * 			objects.									
+	 ********************************************************************/	public String toString() throws NullPointerException{
 		String databaseString = "";
 		try{
 			for (int i = 0; i < size; i++) {
@@ -374,7 +416,6 @@ public class CollegeDatabase implements Database{
 			}
 		}
 		catch (NullPointerException exception) {
-			System.out.println("size: " + this.size + databaseString); //delete test FIXME
 			System.out.println("Cannot resolve null to a string.");
 		}
 		return databaseString;
