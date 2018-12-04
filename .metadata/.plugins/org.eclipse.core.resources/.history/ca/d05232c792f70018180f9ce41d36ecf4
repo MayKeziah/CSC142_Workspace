@@ -271,10 +271,6 @@ public class CollegeDatabase implements Database{
 	public void print() {
 		System.out.println(this.toString());
 	}
-	
-	public void printCommaSeparated() {
-		System.out.println(this.toFile());
-	}
 
 	/**************************************************************************
 	 * 		search Method: Searches for a specific Person in the database.
