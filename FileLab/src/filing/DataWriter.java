@@ -13,9 +13,15 @@ public class DataWriter {
 	public static void main(String[] args) throws IOException{
 		// set path name
 		String pathName =  
-				File.separator + "U:"      + File.separator + "Documents" +
-				File.separator + "CSC_142" + File.separator + "F18" + 
-				File.separator + "Scores.txt";
+						  File.separator + "C:"
+						+ File.separator + "Users"
+						+ File.separator + "E" 
+						+ File.separator + "Documents" 
+						+ File.separator + "School"
+						+ File.separator + "Fall 2018" 
+						+ File.separator + "CSC_142" 
+						+ File.separator +  "F18" 
+						+ File.separator + "Scores.txt";
 				
 		//create a file object
 		File file = new File(pathName);	
@@ -35,6 +41,20 @@ public class DataWriter {
 		output.println(88);
 		output.print("Milton Badgely\t");
 		output.println(72);
+		output.print("Michael Chang\t");
+		output.println(87);
+		output.print("Truman Jung\t");
+		output.println(73);
+		output.print("Frank Carter\t");
+		output.println(65);
+		output.print("Samuel Huynh\t");
+		output.println(77);
+		output.print("Hugh Knowles\t");
+		output.println(79);
+		output.print("Kyle Barker\t");
+		output.println(95);
+		output.print("Tamsin Miles\t");
+		output.println(85);
 		
 		//close the file
 		output.close();

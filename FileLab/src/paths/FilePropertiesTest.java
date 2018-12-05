@@ -8,9 +8,14 @@ public class FilePropertiesTest {
 		
 		// set path name
 		String pathName =  
-				File.separator + "U:"      + File.separator + "Documents" +
-				File.separator + "CSC_142" + File.separator + "F18" + 
-				File.separator + "College.txt";
+						  File.separator + "C:"
+						+ File.separator + "Users"
+						+ File.separator + "E" 
+						+ File.separator + "Documents" 
+						+ File.separator + "School"
+						+ File.separator + "Fall 2018" 
+						+ File.separator + "CSC_142" 
+						+ File.separator + "Scores.txt";
 		
 		//create a file object
 		File file = new File(pathName);	
