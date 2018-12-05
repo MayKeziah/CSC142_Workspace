@@ -91,6 +91,7 @@ public class DataReader {
 				
 		//write formatted output to file
 		for (int i = 0; i < students.length; i++) {
+			output.println(students[i].toFile());
 			
 			// (4) write code to print array to file "Sorted"
 		}
