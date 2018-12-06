@@ -113,8 +113,8 @@ public class CollegeDatabase implements Database{
 	}
 	
 	/**************************************************************************
-	 * 		byGPA Method: creates a new database of Person objects with a GPA 
-	 * 					  in a specified range.
+	 * 		byGPA Method: creates a new database of Person objects, that are 
+	 * 					  instances of Student's, with a GPA in a specified range.
 	 * 			Takes 2 parameters, a double representing a Student's GPA,  
 	 * 			and an operator ("over" or "under"). 
 	 * 			It then sorts through the current array of Person type, entry, 
@@ -144,8 +144,9 @@ public class CollegeDatabase implements Database{
 	}
 
 	/**************************************************************************
-	 * 		bySalary Method: creates a new database of Person objects with a  
-	 * 					 	 salary in a specified range.
+	 * 		bySalary Method: creates a new database of Person objects, that are
+	 * 						 instances of Employee's, with a salary in a 
+	 * 						 specified range.
 	 * 			Takes 2 parameters, a double representing an Employee's salary,  
 	 * 			and an operator ("over" or "under"). 
 	 * 			It then sorts through the current array of Person type, entry, 
