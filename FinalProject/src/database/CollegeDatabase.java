@@ -123,7 +123,7 @@ public class CollegeDatabase implements Database{
 	 * 			Returns the new college database.
 	 **************************************************************************/
 	
-	public CollegeDatabase byGPA(double GPA, Operator operator) {
+	private CollegeDatabase byGPA(double GPA, Operator operator) {
 		Person[] inRange = new Person[size];
 		int count = 0;
 		for (int i = 0; i < size; i++) {
@@ -153,7 +153,7 @@ public class CollegeDatabase implements Database{
 	 * 			a salary in the specified range.
 	 * 			Returns the new college database.
 	 **************************************************************************/
-	public CollegeDatabase bySalary(double salary, Operator operator) {
+	private CollegeDatabase bySalary(double salary, Operator operator) {
 		Person[] inRange = new Person[size];
 		int count = 0;
 		for (int i = 0; i < size; i++) {
