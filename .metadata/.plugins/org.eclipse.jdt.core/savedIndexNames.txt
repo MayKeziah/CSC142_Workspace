@@ -3,8 +3,8 @@ INDEX VERSION 1.131+C:\Users\E\Documents\School\Fall 2018\CSC_142\F18\Workspace\
 3197134426.index
 14682029.index
 398058497.index
-1657330681.index
 3886402465.index
+1657330681.index
 2511617568.index
 2301944148.index
 950926466.index
@@ -18,7 +18,6 @@ INDEX VERSION 1.131+C:\Users\E\Documents\School\Fall 2018\CSC_142\F18\Workspace\
 4289135590.index
 1084624933.index
 1455593261.index
-378753145.index
 2710353254.index
 1622776731.index
 2573964410.index

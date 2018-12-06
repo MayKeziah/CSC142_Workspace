@@ -184,7 +184,6 @@ public class CollegeDatabase implements Database{
 			return false;
 		}
 		else {
-			entry[index] = null;
 			for (int i = index; i < size; i++) {
 				entry[i] = entry[i + 1];
 			}
