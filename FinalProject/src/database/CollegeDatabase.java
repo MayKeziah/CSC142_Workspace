@@ -178,7 +178,9 @@ public class CollegeDatabase implements Database{
 	 * 		delete Method: deletes a specific Person from the database.
 	 * 			Takes one parameter, an integer representing the location 
 	 * 			in the database of the entry to delete and the following 
-	 * 			entries are shifted to fill the deleted location.	
+	 * 			entries are shifted to fill the deleted location.
+	 * 			Returns a boolean object representing whether the delete 
+	 * 			was successful	
 	 **************************************************************************/
 	public boolean delete(int index) {
 		if ((index < 0) || (index >= size)) {
@@ -199,6 +201,8 @@ public class CollegeDatabase implements Database{
 	 * 			It uses the name to find the location in the database of the entry 
 	 * 			to delete and the following entries are shifted to fill the deleted
 	 * 			location.	
+	 * 			Returns a boolean object representing whether the delete 
+	 * 			was successful
 	 **************************************************************************/
 	public boolean delete(String name) {
 		int index = this.findLocation(name);
