@@ -3,7 +3,6 @@
 <fullyQualifiedTypeName name="people.Status"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="java.lang.Math"/>
-<fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="javafx.scene.media.MediaPlayer.Status"/>
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="people.Employee"/>
@@ -12,4 +11,5 @@
 <fullyQualifiedTypeName name="database.CollegeDatabase.PersonType"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="people.Person"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
 </qualifiedTypeNameHistroy>

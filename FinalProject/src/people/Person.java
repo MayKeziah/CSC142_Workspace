@@ -60,6 +60,19 @@ public class Person {
 	}
 
 	/********************************************************************
+	 * 		MUTATORS: setAge() and setName()												
+	 * 			Data field setters.											
+	 ********************************************************************/
+	//Mutators to set Data Field values
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/********************************************************************
 	 * 		toFile Method:											
 	 * 			Takes no arguments,
 	 * 			returns a string representation of a person (their data fields
@@ -77,19 +90,8 @@ public class Person {
 	public String toString() {
 		String nameLine = "    Name: " + name;
 		String ageLine  = "\n     Age: " + age;
-		return "\n--------------------------------------------------\n" + nameLine + ageLine;
-	}
-	
-	/********************************************************************
-	 * 		MUTATORS: setAge() and setName()												
-	 * 			Data field setters.											
-	 ********************************************************************/
-	//Mutators to set Data Field values
-	public void setAge(int age) {
-		this.age = age;
-	}
-	public void setName(String name) {
-		this.name = name;
+		return "\n--------------------------------------------------\n " 
+				+ this.printStatus().toUpperCase() + "\n\n" + nameLine + ageLine;
 	}
 
 }
