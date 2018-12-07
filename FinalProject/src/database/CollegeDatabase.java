@@ -1,6 +1,7 @@
 package database;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 import people.Employee;
 import people.Person;
@@ -34,6 +35,8 @@ public class CollegeDatabase implements Database{
 	public static enum Operator{
 		OVER, UNDER
 	}
+	
+	private Scanner keyboard = new Scanner(System.in);
 	
 	/**************************************************************************
 	 * 		Constructor: 
@@ -206,6 +209,17 @@ public class CollegeDatabase implements Database{
 	 **************************************************************************/
 	public boolean delete(String name) {
 		int index = this.findLocation(name);
+		if(!this.delete(index)) {
+			System.out.println("\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" 
+							 + "Person not found in database, could not delete " + name + "."
+							 + "\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n"
+							 + "Would you like to try again (Y/N)?\n");
+			String tryAgain = keyboard.next();
+			if((tryAgain == "Y") || (tryAgain == "y")) {
+				System.out.println("Name of person to delete: ");
+				return this.delete(keyboard.next());
+			}
+		}
 		return this.delete(index);
 	}
 	
