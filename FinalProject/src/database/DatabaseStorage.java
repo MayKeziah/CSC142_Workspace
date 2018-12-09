@@ -70,6 +70,16 @@ public class DatabaseStorage {
 	}
 
 	/*******************************************************************************
+	 * 		setFile Method: Sets the file location to be read from or written to.
+	 * 				Takes one argument, a string file path.
+	 * 				Creates a new File object using the file path and sets 
+	 * 				the file data field equal to it.						
+	 *******************************************************************************/
+	public void setFile(String filePath) {
+		file = new File(filePath);
+	}
+
+	/*******************************************************************************
 	 * 		write Method: Writes the contents of a database entry to a file.
 	 * 				Takes one argument, a CollegeDatabase object.
 	 * 				Writes information about each occupied element
@@ -89,16 +99,6 @@ public class DatabaseStorage {
 	}
 
 
-	/*******************************************************************************
-	 * 		setFile Method: Sets the file location to be read from or written to.
-	 * 				Takes one argument, a string file path.
-	 * 				Creates a new File object using the file path and sets 
-	 * 				the file data field equal to it.						
-	 *******************************************************************************/
-	public void setFile(String filePath) {
-		file = new File(filePath);
-	}
-	
 	/*******************************************************************************
 	 * 		writeCommaSeperated Method: Writes the contents of a database entry to a file.
 	 * 				Takes one argument, a CollegeDatabase object.
