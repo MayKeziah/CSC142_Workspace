@@ -14,7 +14,7 @@ public class PeopleClient {
 //		System.out.println(mich.toFile());
 		System.out.println(me.toFile() + me.toFile());
 		System.out.println(jess.toString() + finn.toString() + me.toString());
-		System.out.println(finn.hundredth(43.3456));
+		System.out.println(finn.toFile());
 		
 
 	}

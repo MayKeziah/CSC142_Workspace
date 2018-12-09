@@ -17,11 +17,6 @@ public class Employee extends Person {
 	//Default
 	public Employee() {}
 	
-	//Person and Employee data fields passed as parameters
-	public Employee(String name, int age, String office, double salary) {
-		this(new Person(name, age), office, salary);
-	}
-	
 	//Person object and Employee data fields passed as parameters
 	public Employee(Person person, String office, double salary) {
 		super(person);
@@ -39,6 +34,11 @@ public class Employee extends Person {
 		this(name, age, null, 0.0);
 	}
 	
+	//Person and Employee data fields passed as parameters
+	public Employee(String name, int age, String office, double salary) {
+		this(new Person(name, age), office, salary);
+	}
+
 	/********************************************************************
 	 * 		Accessor methods: getOffice() and getSalary()	 												
 	 * 			data field getters														

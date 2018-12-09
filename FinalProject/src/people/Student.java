@@ -17,6 +17,13 @@ public class Student extends Person {
 	//Default
 	public Student() {}
 	
+	//Person object and Student data fields passed as parameters
+	public Student(Person person, Status status, double GPA) {
+		super(person);
+		this.status = status;
+		this.GPA = GPA;
+	}
+
 	//data fields passed as parameters
 	public Student(Status status, double GPA) {
 		this(null, 0, status, GPA);
@@ -31,14 +38,6 @@ public class Student extends Person {
 	public Student(String name, int age, Status status, double GPA) {
 		this(new Person(name, age), status, GPA);
 	}
-	
-	//Person object and Student data fields passed as parameters
-	public Student(Person person, Status status, double GPA) {
-		super(person);
-		this.status = status;
-		this.GPA = GPA;
-	}
-
 	
 	/********************************************************************
 	 * 		isOnProbation Method:	 												
