@@ -20,6 +20,10 @@ public class DatabaseStorage {
 	//A file object
 	private File file;
 	
+	//Default constructor: File is null.
+	public DatabaseStorage() {}
+	
+	//Sets file to be at the specified location with the specified name.
 	public DatabaseStorage(String filePath) {
 		setFile(filePath);
 	}
