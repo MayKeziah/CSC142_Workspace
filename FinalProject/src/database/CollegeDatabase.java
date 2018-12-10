@@ -116,8 +116,9 @@ public class CollegeDatabase implements Database{
 	}
 	
 	/**************************************************************************
-	 * 		byGPA Method: creates a new database of Person objects, that are 
-	 * 					  instances of Student's, with a GPA in a specified range.
+	 * 		byGPA Method: creates a new CollegeDatabase of Student objects, 
+	 * 					  whose GPA is in a specified range.
+	 * 			**This method is private**
 	 * 			Takes 2 parameters, a double representing a Student's GPA,  
 	 * 			and an operator ("over" or "under"). 
 	 * 			It then sorts through the current array of Person type, entry, 
@@ -128,7 +129,6 @@ public class CollegeDatabase implements Database{
 	
 	private CollegeDatabase byGPA(double GPA, Operator operator) {
 		CollegeDatabase inRange = new CollegeDatabase(size);
-		int count = 0;
 		for (int i = 0; i < size; i++) {
 			if (operator == Operator.OVER){
 				if (((Student)entry[i]).getGPA() > GPA) {
