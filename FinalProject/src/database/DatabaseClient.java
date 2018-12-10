@@ -38,12 +38,12 @@ public class DatabaseClient {
 //		myTest.print();
 //		database.print();
 //		database.separate("Employee").print();
-		CollegeDatabase test1 = database.separate(PersonType.EMPLOYEE);
-		database.deleteDatabase(test1);
+		CollegeDatabase test1 = database.separate(PersonType.STUDENT, 3.0, Operator.OVER);
+//		database.deleteDatabase(test1);
 //		CollegeDatabase test2 = database.separate(PersonType.STUDENT);
 		System.out.println("X X X X X X X X X X X X X X X X X");
 //		test1.add(test2);
-		database.print();
+		test1.print();
 //		database.separate(20).print();
 //		CollegeDatabase myTest = database.separate(PersonType.EMPLOYEE, 58000.0, Operator.OVER);
 //		Person tryMe = myTest.pop("Jessup Wingo");
