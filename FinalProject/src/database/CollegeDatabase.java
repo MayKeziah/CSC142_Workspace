@@ -127,23 +127,21 @@ public class CollegeDatabase implements Database{
 	 **************************************************************************/
 	
 	private CollegeDatabase byGPA(double GPA, Operator operator) {
-		Person[] inRange = new Person[size];
+		CollegeDatabase inRange = new CollegeDatabase(size);
 		int count = 0;
 		for (int i = 0; i < size; i++) {
 			if (operator == Operator.OVER){
 				if (((Student)entry[i]).getGPA() > GPA) {
-					inRange[count] = entry[i];
-					count++;
+					inRange.add(entry[i]);
 				}
 			}
 			else if (operator == Operator.UNDER) {
 				if (((Student)entry[i]).getGPA() < GPA) {
-					inRange[count] = entry[i];
-					count++;
+					inRange.add(entry[i]);
 				}
 			}
 		}
-		return new CollegeDatabase(inRange, count);
+		return inRange;
 	}
 
 	/**************************************************************************
