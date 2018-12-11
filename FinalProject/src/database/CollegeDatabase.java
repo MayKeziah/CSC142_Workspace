@@ -183,7 +183,7 @@ public class CollegeDatabase implements Database{
 	 * 			Returns a boolean object representing whether the delete 
 	 * 			was successful	
 	 **************************************************************************/
-	public boolean delete(int index) {
+	private boolean delete(int index) {
 		if ((index < 0) || (index >= size)) {
 			return false;
 		}
@@ -228,9 +228,16 @@ public class CollegeDatabase implements Database{
 	 * 			location.	
 	 **************************************************************************/
 	public void deleteDatabase(CollegeDatabase separatedData) {
+		int successCount = 0;
 		for (int i = 0; i < separatedData.size; i++) {
-			this.delete(separatedData.entry[i].getName());
+			boolean currentBool = this.delete(this.findLocation(separatedData.entry[i].getName()));
+			if (currentBool) {
+				successCount++;
+			}
 		}
+		System.out.println("\nSuccessful deletions: " +  successCount
+						 + "\n    Failed deletions: " + (separatedData.size - successCount) 
+						 + "\n Attempted deletions: " +  separatedData.size);
 	}
 
 	/**************************************************************************
