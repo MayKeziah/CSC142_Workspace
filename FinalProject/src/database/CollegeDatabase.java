@@ -211,9 +211,8 @@ public class CollegeDatabase implements Database{
 			System.out.println("\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" 
 							 + "Person not found in database, could not delete " + name + "."
 							 + "\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n"
-							 + "\nWould you like to try again (Y/N)?\n");
-			String tryAgain = keyboard.next();
-			if((tryAgain == "Y") || (tryAgain == "y")) {
+							 + "\nPlease try again.\t\t(Enter 'q' to quit)");
+			if (keyboard.next() != "q") {
 				System.out.println("Name of person to delete: ");
 				return this.delete(keyboard.next());
 			}
