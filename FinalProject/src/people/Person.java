@@ -1,9 +1,9 @@
 package people;
-/********************************************************************
+/************************************************************************
  * 		Person Class: 												
  * 			This class is a super class for persons associated with
  * 			a college. A college person has a name and an age.								
- ********************************************************************/
+ ************************************************************************/
 public class Person {
 	private int age;
 	private String name;
@@ -23,7 +23,7 @@ public class Person {
 	
 	//Copy constructor: copies data fields of passed Person
 	public Person(Person person) {
-		this.age = person.age;
+		this.age  = person.age;
 		this.name = person.name;
 	}
 
@@ -65,7 +65,7 @@ public class Person {
 	 ********************************************************************/
 	//Mutators to set Data Field values
 	public void setAge(int age) {
-		this.age = age;
+		this.age  = age;
 	}
 
 	public void setName(String name) {

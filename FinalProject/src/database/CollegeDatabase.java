@@ -83,7 +83,7 @@ public class CollegeDatabase implements Database{
 	 * 			when Database is too full, add expands it to accommodate 
 	 * 			new entries.									
 	 **************************************************************************/
-	public void add (Person person) { //FIXME
+	public void add (Person person) {
 		if (this.findLocation(person.getName()) == -1){
 			if(size == entry.length) {
 				expand();
