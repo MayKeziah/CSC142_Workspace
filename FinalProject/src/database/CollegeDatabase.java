@@ -28,6 +28,10 @@ public class CollegeDatabase implements Database{
 	//To handle input errors
 	private Scanner keyboard = new Scanner(System.in);
 	
+	//Person representing a Person not found in the Database.
+	final static Person PERSON_NOT_FOUND = new Person("NOT_FOUND", 0);
+	
+	
 	/**************************************************************************
 	 * 		Constructor: 
 	 * 			a no-argument constructor that calls a second constructor 
@@ -265,10 +269,17 @@ public class CollegeDatabase implements Database{
 	/**************************************************************************
 	 * 		get Method: Gets information about a person.
 	 * 			Takes one parameter, an integer index of the database.
-	 * 			Returns the person object at that location.		
+	 * 			Returns the person object at that location.
+	 * 			If no Person object is found, returns PERSON_NOT_FOUND.		
 	 **************************************************************************/
 	public Person get(int index) {
-		return entry[index];
+		if ((index < 0) || (index >= size)) {
+			return entry[index];
+		}
+		else{
+			System.out.println(index + "is not a valid index. PERSON_NOT_FOUND.");
+			return PERSON_NOT_FOUND;
+		}
 	}
 
 	/**************************************************************************
@@ -296,10 +307,14 @@ public class CollegeDatabase implements Database{
 	 * 			Returns the person object with that name and deletes them from 
 	 * 			this database.		
 	 **************************************************************************/
-	public Person pop(String name) {
-		Person toReturn = search(name);
-		delete(findLocation(name));
-		return toReturn;
+	public Person pop(int index) {
+		if (index > -1) {
+			Person toReturn = get(index);
+			delete(index);
+			return toReturn;
+		}
+		
+		return get(index);
 	}
 	
 	/**************************************************************************
@@ -327,12 +342,14 @@ public class CollegeDatabase implements Database{
 	 * 		search Method: Searches for a specific Person in the database.
 	 * 			Takes one parameter, a String of a Person's name.
 	 * 			If found, it returns the Person's information. 
-	 * 			If not found, it returns a "Person not in Database" statement.
+	 * 			If not found, it returns a "Person not in Database" statement
+	 * 			and an empty Peson object.
 	 **************************************************************************/
 	public Person search(String name) throws IllegalArgumentException{
 		int personPosition = this.findLocation(name);
 		if (personPosition == -1) {
-			throw new IllegalArgumentException(name + "was not found in the database.");
+			System.out.println(name + "was not found in the database. Returned unknown Person object.");
+			return PERSON_NOT_FOUND;
 		}
 		return entry[personPosition];
 	}
