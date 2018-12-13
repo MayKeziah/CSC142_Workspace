@@ -243,7 +243,7 @@ public class CollegeDatabase implements Database{
 	 * 			original array into the new array. The new array will now be 
 	 * 			used going forward.						
 	 **************************************************************************/
-	public void expand() {
+	private void expand() {
 		Person[] newArray = new Person[2 * entry.length];
 		for(int i = 0; i < entry.length; i++) {
 			newArray[i] = entry[i];
@@ -258,7 +258,7 @@ public class CollegeDatabase implements Database{
 	 * 			in the database.	
 	 * 			If the name is not found, it returns the value NOT_FOUND (-1).			
 	 **************************************************************************/
-	public int findLocation(String name) {
+	private int findLocation(String name) {
 		for (int i = 0; i < size; i++) {
 			if (entry[i].getName().equals(name)) {
 				return i;
@@ -363,21 +363,42 @@ public class CollegeDatabase implements Database{
 	 * 			Returns a College Database of people this age.
 	 **************************************************************************/
 	public CollegeDatabase separate(int age) {
-		Person[] ofAge = new Person[size];
-		int count = 0;
+		CollegeDatabase ofAge = new CollegeDatabase(size);
 		for (int i = 0; i < size; i++) {
 			if (entry[i].getAge() == age) {
-				ofAge[count] = entry[i];
-				count++;
+				ofAge.add(entry[i]);
 			}
 		}
-		if (count == 0) {
-			System.out.println("No entries match your search range.");
-			return new CollegeDatabase();
-		}
-		return new CollegeDatabase(ofAge, count);
+		return ofAge;
 	}
 	
+	/**************************************************************************
+	 * 		separate Method: creates a new database of Person objects with a 
+	 * 						 specified age range.
+	 * 			Takes two parameters, a Person's age, and and an Operator 
+	 * 			(CollegeDatabase.Operator) "OVER" or "UNDER". It then sorts 
+	 * 			through the current array of Person type, entry, and makes a 
+	 * 			new array full of Person objects that are over/under the 
+	 * 			specified range.
+	 * 			Returns a College Database of Person objects in this age range.
+	 **************************************************************************/
+	public CollegeDatabase separate(int age, Operator operator) throws IllegalArgumentException{
+		CollegeDatabase inRange = new CollegeDatabase(size);
+		for (int i = 0; i < size; i++) {
+			if (operator == Operator.OVER){
+				if (entry[i].getAge() > age) {
+					inRange.add(entry[i]);
+				}
+			}
+			else if (operator == Operator.UNDER) {
+				if (entry[i].getAge() < age) {
+					inRange.add(entry[i]);
+				}
+			}
+		}
+		return inRange;
+	}
+
 	/**************************************************************************
 	 * 		separate Method: creates a new database of Person objects with a 
 	 * 						 GPA or Salary (depending on specified sub-type) 
@@ -405,39 +426,6 @@ public class CollegeDatabase implements Database{
 		}
 		return inRange;
 	
-	}
-	
-	/**************************************************************************
-	 * 		separate Method: creates a new database of Person objects with a 
-	 * 						 specified age range.
-	 * 			Takes two parameters, a Person's age, and and an Operator 
-	 * 			(CollegeDatabase.Operator) "OVER" or "UNDER". It then sorts 
-	 * 			through the current array of Person type, entry, and makes a 
-	 * 			new array full of Person objects that are over/under the 
-	 * 			specified range.
-	 * 			Returns a College Database of Person objects in this age range.
-	 **************************************************************************/
-	public CollegeDatabase separate(int age, Operator operator) throws IllegalArgumentException{
-		Person[] inRange = new Person[size];
-		int count = 0;
-		for (int i = 0; i < size; i++) {
-			if (operator == Operator.OVER){
-				if (entry[i].getAge() > age) {
-					inRange[count] = entry[i];
-					count++;
-				}
-			}
-			else if (operator == Operator.UNDER) {
-				if (entry[i].getAge() < age) {
-					inRange[count] = entry[i];
-					count++;
-				}
-			}
-			else {
-				throw new IllegalArgumentException("Invalid operator: \"" + operator + "\". Operator must be \"over\" or \"under\".");
-			}
-		}
-		return new CollegeDatabase(inRange, count);
 	}
 	
 	/**************************************************************************
