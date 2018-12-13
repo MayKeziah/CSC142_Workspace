@@ -15,18 +15,17 @@ public class Person {
 	//Default
 	public Person() {}
 	
-	//data fields passed as parameters
-	public Person(String name, int age) {
-		this.age  = age;
-		this.name = name;
-	}
-	
 	//Copy constructor: copies data fields of passed Person
 	public Person(Person person) {
 		this.age  = person.age;
 		this.name = person.name;
 	}
 
+	//data fields passed as parameters
+	public Person(String name, int age) {
+		this.age  = age;
+		this.name = name;
+	}
 	
 	/********************************************************************
 	 * 		Accessor Methods: getAge() and getName() 												

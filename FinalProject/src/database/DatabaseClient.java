@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 
-import database.CollegeDatabase.Operator;
-import database.CollegeDatabase.PersonType;
+import database.Operator;
+import database.PersonType;
 import people.Person;
 
 public class DatabaseClient {

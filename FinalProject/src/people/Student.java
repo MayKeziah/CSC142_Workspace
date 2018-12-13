@@ -104,7 +104,7 @@ public class Student extends Person {
 	 * 		Mutator Methods: setGPA() and serStatus()	 												
 	 * 			Data field setters													
 	 ********************************************************************/
-	public void setGPA(int GPA) {
+	public void setGPA(double GPA) {
 		this.GPA = GPA;
 	}
 	public void setStatus(Status status) {
