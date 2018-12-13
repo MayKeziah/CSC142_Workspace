@@ -70,10 +70,10 @@ public class CollegeDatabase implements Database{
 	 * 			array. This array becomes the entry data field and the size 
 	 * 			becomes the size data field. 	
 	 **************************************************************************/
-	public CollegeDatabase(Person[] typeDatabase, int count) {
-		entry = typeDatabase;
-		size = count;
-	}
+//	public CollegeDatabase(Person[] typeDatabase, int count) {
+//		entry = typeDatabase;
+//		size = count;
+//	}
 	
 	
 	/**************************************************************************
