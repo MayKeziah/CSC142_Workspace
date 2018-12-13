@@ -43,7 +43,9 @@ public class DatabaseClient {
 //		CollegeDatabase test2 = database.separate(PersonType.STUDENT);
 		System.out.println("X X X X X X X X X X X X X X X X X");
 //		test1.add(test2);
+		Person y = test1.pop("Jessica Flack");
 		test1.print();
+		System.out.println(y.toString());
 //		database.separate(20).print();
 //		CollegeDatabase myTest = database.separate(PersonType.EMPLOYEE, 58000.0, Operator.OVER);
 //		Person tryMe = myTest.pop("Jessup Wingo");

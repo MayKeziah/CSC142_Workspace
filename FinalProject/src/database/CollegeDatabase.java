@@ -1,6 +1,5 @@
 package database;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 import people.Employee;
@@ -26,16 +25,7 @@ public class CollegeDatabase implements Database{
 	//Has a value of -1 for any entry not found
 	final int NOT_FOUND = -1;
 	
-	//To specify sub-type of Person object
-	public static enum PersonType{
-		EMPLOYEE, STUDENT
-	}
-	
-	//To specify if a range is meant to be over or under a given number
-	public static enum Operator{
-		OVER, UNDER
-	}
-	
+	//To handle input errors
 	private Scanner keyboard = new Scanner(System.in);
 	
 	/**************************************************************************
@@ -70,10 +60,10 @@ public class CollegeDatabase implements Database{
 	 * 			array. This array becomes the entry data field and the size 
 	 * 			becomes the size data field. 	
 	 **************************************************************************/
-//	public CollegeDatabase(Person[] typeDatabase, int count) {
-//		entry = typeDatabase;
-//		size = count;
-//	}
+	public CollegeDatabase(Person[] typeDatabase, int count) {
+		entry = typeDatabase;
+		size = count;
+	}
 	
 	
 	/**************************************************************************
@@ -227,7 +217,7 @@ public class CollegeDatabase implements Database{
 	 * 			and the following entries are shifted to fill the deleted
 	 * 			location.	
 	 **************************************************************************/
-	public void deleteDatabase(CollegeDatabase separatedData) {
+	public void deleteDatabase(CollegeDatabase separatedData) {//FIXME: popDatabase?
 		int successCount = 0;
 		for (int i = 0; i < separatedData.size; i++) {
 			boolean currentBool = this.delete(this.findLocation(separatedData.entry[i].getName()));
@@ -307,8 +297,8 @@ public class CollegeDatabase implements Database{
 	 * 			this database.		
 	 **************************************************************************/
 	public Person pop(String name) {
-		Person toReturn = get(findLocation(name));
-		this.delete(findLocation(name));
+		Person toReturn = search(name);
+		delete(findLocation(name));
 		return toReturn;
 	}
 	
