@@ -382,7 +382,7 @@ public class CollegeDatabase implements Database{
 	 * 			specified range.
 	 * 			Returns a College Database of Person objects in this age range.
 	 **************************************************************************/
-	public CollegeDatabase separate(int age, Operator operator) throws IllegalArgumentException{
+	public CollegeDatabase separate(int age, Operator operator){
 		CollegeDatabase inRange = new CollegeDatabase(size);
 		for (int i = 0; i < size; i++) {
 			if (operator == Operator.OVER){
@@ -400,6 +400,34 @@ public class CollegeDatabase implements Database{
 	}
 
 	/**************************************************************************
+	 * 		separate Method: creates a new database of a specified sub-type.
+	 * 			Takes one parameter, a PersonType (CollegeDatabase.PersonType)
+	 * 			"EMPLOYEE" or "STUDENT". 
+	 * 			It then sorts through the current array of Person type, entry, 
+	 * 			and makes a new array full of Person objects that are instances 
+	 * 			of either "Employee" or "Student", as specified by the parameter.
+	 * 			It then returns a CollegeDatabase of the array of sub-type objects.
+	 **************************************************************************/
+	public CollegeDatabase separate(PersonType type) throws IllegalArgumentException{
+		CollegeDatabase typeData = new CollegeDatabase(size);
+		if (type == PersonType.EMPLOYEE) {
+			for (int i = 0; i < this.size; i++) {
+				if (entry[i] instanceof Employee) {
+					typeData.add(entry[i]); 
+				}
+			}
+		}
+		else if (type == PersonType.STUDENT) {
+			for (int i = 0; i < this.size; i++) {
+				if (entry[i] instanceof Student) {
+					typeData.add(entry[i]); 
+				}
+			}
+		}
+		return typeData;
+	}
+
+	/**************************************************************************
 	 * 		separate Method: creates a new database of Person objects with a 
 	 * 						 GPA or Salary (depending on specified sub-type) 
 	 * 						 in a specified range.
@@ -412,51 +440,17 @@ public class CollegeDatabase implements Database{
 	 * 			data field "GPA" or "salary" in the specified range.
 	 * 			Returns a College Database of people this age.
 	 **************************************************************************/
-	public CollegeDatabase separate(PersonType type, double num, Operator operator) throws IllegalArgumentException {
+	public CollegeDatabase separate(PersonType type, double num, Operator operator) {
 		CollegeDatabase ofType = this.separate(type);
 		CollegeDatabase inRange;
 		if (type == PersonType.EMPLOYEE) {
 			inRange = ofType.bySalary(num, operator);
 		}
-		else if (type == PersonType.STUDENT) {
+		else{
 			inRange = ofType.byGPA(num, operator);
-		}
-		else {
-			throw new IllegalArgumentException("Type must be \"Employee\" or \"Student\". Type given: " + type + ".");
 		}
 		return inRange;
 	
-	}
-	
-	/**************************************************************************
-	 * 		separate Method: creates a new database of a specified sub-type.
-	 * 			Takes one parameter, a PersonType (CollegeDatabase.PersonType)
-	 * 			"EMPLOYEE" or "STUDENT". 
-	 * 			It then sorts through the current array of Person type, entry, 
-	 * 			and makes a new array full of Person objects that are instances 
-	 * 			of either "Employee" or "Student", as specified by the parameter.
-	 * 			It then returns a CollegeDatabase of the array of sub-type objects.
-	 **************************************************************************/
-	public CollegeDatabase separate(PersonType type) throws IllegalArgumentException{
-		Person[] typeData = new Person[size];
-		int count = 0;
-		if (type == PersonType.EMPLOYEE) {
-			for (int i = 0; i < this.size; i++) {
-				if (entry[i] instanceof Employee) {
-					typeData[count] = entry[i]; 
-					count++;
-				}
-			}
-		}
-		else if (type == PersonType.STUDENT) {
-			for (int i = 0; i < this.size; i++) {
-				if (entry[i] instanceof Student) {
-					typeData[count] = entry[i]; 
-					count++;
-				}
-			}
-		}
-		return new CollegeDatabase(typeData, count);
 	}
 	
 	/********************************************************************
