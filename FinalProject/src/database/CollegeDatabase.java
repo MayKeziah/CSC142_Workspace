@@ -78,7 +78,8 @@ public class CollegeDatabase implements Database{
 	 * 			new entries.									
 	 **************************************************************************/
 	public void add (Person person) {
-		if (this.findLocation(person.getName()) == -1){
+		if (person.getName().equals("NOT_FOUND")) {}
+		else if (this.findLocation(person.getName()) == -1){
 			if(size == entry.length) {
 				expand();
 			}
@@ -308,14 +309,14 @@ public class CollegeDatabase implements Database{
 	 * 			this database.		
 	 **************************************************************************/
 	public Person pop(int index) {
-		if (index > -1) {
+		if ((index < 0) || (index >= size)) {
 			Person toReturn = get(index);
 			delete(index);
 			return toReturn;
 		}
-		
 		return get(index);
 	}
+	
 	
 	/**************************************************************************
 	 * 		print Method: Prints information about all Person objects in 
