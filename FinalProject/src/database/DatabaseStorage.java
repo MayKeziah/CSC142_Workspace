@@ -1,7 +1,6 @@
 package database;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Scanner;
@@ -103,15 +102,15 @@ public class DatabaseStorage {
 	 * 				Takes one argument, a CollegeDatabase object.
 	 * 				Writes information about each occupied element
 	 * 				in the database to the current file. 							
-	 * @throws FileNotFoundException 
 	 *******************************************************************************/
-	public void write(CollegeDatabase data) throws FileNotFoundException {		
+	public void write(CollegeDatabase data) throws IOException {
+		PrintStream writer = new PrintStream(file);
+		
 		if (file.exists() && file.canWrite()) {
-			PrintStream writer = new PrintStream(file);
 			writer.println(data.toString() + "\n");
-			writer.close();
 		}
 		else {
+			writer.close();
 			System.out.println("The file you specified is invalid, please enter a correct filePath and try again (enter 'q' to quit).");
 			String response = keyboard.next();
 			if (!response.equalsIgnoreCase("q")) {
@@ -119,9 +118,10 @@ public class DatabaseStorage {
 				write(data);	
 			}
 			else {
-				System.out.println("Write error: chose not to give valid file path.");
+				throw new IOException("Write error: chose not to give valid file path.");
 			}
 		}
+		writer.close();
 	}
 
 
@@ -133,12 +133,19 @@ public class DatabaseStorage {
 	 *******************************************************************************/
 	public void writeCommaSeperated(CollegeDatabase data) throws IOException {
 		
+<<<<<<< HEAD
 		if (file.exists() && file.canWrite()) {
 			PrintStream writer = new PrintStream(file);
 			for (int i = 0; i < data.getSize(); i++) {
 				writer.println(data.get(i).toFile());
 			}
 			writer.close();
+=======
+		if (file.exists()) {
+			for (int i = 0; i < data.getSize(); i++) {
+				writer.println(data.get(i).toFile() + ", ");
+			}
+>>>>>>> parent of 1bba8b6... writeCommaSeparated DatabaseStorage simplified
 		}
 		else {
 			throw new IOException("Output Exception, output file does not exist.");
