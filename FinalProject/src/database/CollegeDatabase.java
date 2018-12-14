@@ -148,24 +148,19 @@ public class CollegeDatabase implements Database{
 	 * 			a salary in the specified range.
 	 * 			Returns the new college database.
 	 **************************************************************************/
-	private CollegeDatabase bySalary(double salary, Operator operator) {
-		Person[] inRange = new Person[size];
-		int count = 0;
+	private void bySalary(double salary, Operator operator) {
 		for (int i = 0; i < size; i++) {
 			if (operator == Operator.OVER){
-				if (((Employee)entry[i]).getSalary() > salary) {
-					inRange[count] = entry[i];
-					count++;
+				if (((Employee)entry[i]).getSalary() <= salary) {
+					delete(i);
 				}
 			}
 			else if (operator == Operator.UNDER) {
-				if (((Employee)entry[i]).getSalary() < salary) {
-					inRange[count] = entry[i];
-					count++;
+				if (((Employee)entry[i]).getSalary() >= salary) {
+					delete(i);
 				}
 			}
 		}
-		return new CollegeDatabase(inRange, count);
 	}
 
 	/**************************************************************************
