@@ -111,7 +111,9 @@ public class DatabaseStorage {
 		PrintStream writer = new PrintStream(file);
 		
 		if (file.exists() && file.canWrite()) {
-			writer.println(data.toString() + "\n");
+			for (int i = 0; i < data.getSize(); i++) {
+				writer.println(data.get(i).toString());
+			}
 		}
 		else {
 			writer.close();

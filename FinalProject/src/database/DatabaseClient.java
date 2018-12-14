@@ -35,8 +35,7 @@ public class DatabaseClient {
 		CollegeDatabase database = input.read();
 		DatabaseStorage output = new DatabaseStorage(fileLocation2);
 		CollegeDatabase newData = database.separate(PersonType.EMPLOYEE);
-		output.writeCommaSeperated(newData);
-		String e = "my edit";
+		output.write(newData);
 
 	}
 
