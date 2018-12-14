@@ -440,14 +440,13 @@ public class CollegeDatabase implements Database{
 	 **************************************************************************/
 	public CollegeDatabase separate(PersonType type, double num, Operator operator) {
 		CollegeDatabase ofType = this.separate(type);
-		CollegeDatabase inRange;
 		if (type == PersonType.EMPLOYEE) {
-			inRange = ofType.bySalary(num, operator);
+			ofType.bySalary(num, operator);
 		}
 		else{
-			inRange = ofType.byGPA(num, operator);
+			ofType.byGPA(num, operator);
 		}
-		return inRange;
+		return ofType;
 	
 	}
 	
