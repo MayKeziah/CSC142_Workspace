@@ -78,6 +78,9 @@ public class Person {
 	 * 			and type) as needed to write to a file.						
 	 ********************************************************************/
 	public String toFile() {
+		if (name.equals("NOT_FOUND")) {
+			return "PERSON NOT FOUND";
+		}
 		return this.printStatus() + "," + name + "," + age;
 	}
 	
@@ -89,6 +92,9 @@ public class Person {
 	public String toString() {
 		String nameLine = "    Name: " + name;
 		String ageLine  = "\n     Age: " + age;
+		if (name.equals("NOT_FOUND")) {
+			return "PERSON NOT FOUND";
+		}
 		return "\n--------------------------------------------------\n " 
 				+ this.printStatus().toUpperCase() + "\n\n" + nameLine + ageLine;
 	}

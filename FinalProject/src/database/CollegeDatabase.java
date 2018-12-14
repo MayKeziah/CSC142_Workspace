@@ -165,7 +165,7 @@ public class CollegeDatabase implements Database{
 			return false;
 		}
 		else {
-			for (int i = index; i < size; i++) {
+			for (int i = index; i < (size - 1); i++) {
 				entry[i] = entry[i + 1];
 			}
 			size--;
@@ -257,7 +257,7 @@ public class CollegeDatabase implements Database{
 	 **************************************************************************/
 	public Person get(int index) {
 		if ((index < 0) || (index >= size)) {
-			System.out.println(index + " is not a valid index. PERSON_NOT_FOUND.");
+			System.out.println(index + " is not a valid index.");
 			return PERSON_NOT_FOUND;
 		}
 		else{
@@ -331,7 +331,7 @@ public class CollegeDatabase implements Database{
 	public Person search(String name) throws IllegalArgumentException{
 		int personPosition = this.findLocation(name);
 		if (personPosition == -1) {
-			System.out.println(name + "was not found in the database. Returned unknown Person object.");
+			System.out.println("\"" + name + "\" was not found in the database.");
 			return PERSON_NOT_FOUND;
 		}
 		return entry[personPosition];
