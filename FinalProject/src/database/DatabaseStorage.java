@@ -133,22 +133,12 @@ public class DatabaseStorage {
 	 *******************************************************************************/
 	public void writeCommaSeperated(CollegeDatabase data) throws IOException {
 		
-<<<<<<< HEAD
 		if (file.exists() && file.canWrite()) {
 			PrintStream writer = new PrintStream(file);
 			for (int i = 0; i < data.getSize(); i++) {
 				writer.println(data.get(i).toFile());
 			}
 			writer.close();
-=======
-		if (file.exists()) {
-			for (int i = 0; i < data.getSize(); i++) {
-				writer.println(data.get(i).toFile() + ", ");
-			}
-<<<<<<< HEAD
->>>>>>> parent of 1bba8b6... writeCommaSeparated DatabaseStorage simplified
-=======
->>>>>>> parent of 1bba8b6... writeCommaSeparated DatabaseStorage simplified
 		}
 		else {
 			throw new IOException("Output Exception, output file does not exist.");
