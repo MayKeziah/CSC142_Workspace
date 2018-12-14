@@ -11,7 +11,8 @@ import people.Person;
 public class DatabaseClient {
 
 	public static void main(String[] args) throws IOException {
-		String fileLocation1 = File.separator + "C:"
+		String fileLocation1 = 
+		  File.separator + "C:"
 		+ File.separator + "Users"
 		+ File.separator + "E" 
 		+ File.separator + "Documents" 
@@ -21,7 +22,8 @@ public class DatabaseClient {
 		+ File.separator +  "F18" 
 		+ File.separator + "College.txt";
 		
-		String fileLocation2 = File.separator + "C:"
+		String fileLocation2 = 
+		  File.separator + "C:"
 		+ File.separator + "Users"
 		+ File.separator + "E" 
 		+ File.separator + "Documents" 

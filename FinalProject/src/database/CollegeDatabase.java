@@ -20,16 +20,16 @@ public class CollegeDatabase implements Database{
 	private int size;
 	
 	//Has a value of 20 as the starting database size
-	final static int DEFAULT_SIZE = 20;
+	private final static int DEFAULT_SIZE = 20;
 	
 	//Has a value of -1 for any entry not found
-	final int NOT_FOUND = -1;
+	private final int NOT_FOUND = -1;
 	
 	//To handle input errors
 	private Scanner keyboard = new Scanner(System.in);
 	
 	//Person representing a Person not found in the Database.
-	final static Person PERSON_NOT_FOUND = new Person("NOT_FOUND", 0);
+	private final static Person PERSON_NOT_FOUND = new Person("NOT_FOUND", 0);
 	
 	
 	/**************************************************************************
@@ -57,17 +57,6 @@ public class CollegeDatabase implements Database{
 		}
 	}
 	
-	/**************************************************************************
-	 * 		Constructor: 
-	 * 			Takes an array of Person type and an integer representing the
-	 * 			size, or number of elements, that are currently stored in the
-	 * 			array. This array becomes the entry data field and the size 
-	 * 			becomes the size data field. 	
-	 **************************************************************************/
-	public CollegeDatabase(Person[] typeDatabase, int count) {
-		entry = typeDatabase;
-		size = count;
-	}
 	
 	
 	/**************************************************************************
