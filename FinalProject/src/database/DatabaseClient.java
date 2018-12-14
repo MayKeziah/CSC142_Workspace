@@ -98,9 +98,9 @@ public class DatabaseClient {
 		System.out.println(database.toFile());
 		
 		System.out.println("\nProof that my program can delete a person at the beginning of the database:");
-		System.out.println("DELETE PERSON AT '1' INDEX:\t" + database.get(1).toFile());
+		System.out.println("DELETE PERSON AT '(database size) - 1' INDEX:\t" + database.get(database.getSize() - 1).toFile());
 		System.out.println("Deletion Successful: " 
-						 + database.delete( database.get(1).getName() )
+						 + database.delete( database.get(database.getSize() - 1).getName() )
 						 + "\n");
 		System.out.println(database.toFile());
 

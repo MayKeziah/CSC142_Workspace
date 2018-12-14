@@ -184,7 +184,7 @@ public class CollegeDatabase implements Database{
 	 **************************************************************************/
 	public boolean delete(String name) {
 		int index = this.findLocation(name);
-		if(!this.delete(index)) {
+		if(index == -1) {
 			System.out.println("\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" 
 							 + "Person not found in database, could not delete " + name + "."
 							 + "\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n"
