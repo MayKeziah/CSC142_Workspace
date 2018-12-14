@@ -20,6 +20,9 @@ public class DatabaseStorage {
 	//A file object
 	private File file;
 	
+	//Scanner for error handling
+	private Scanner keyboard = new Scanner(System.in);
+	
 	//Default constructor: File is null.
 	public DatabaseStorage() {}
 	
@@ -59,14 +62,29 @@ public class DatabaseStorage {
 	 * 				Takes no arguments							
 	 *******************************************************************************/
 	public CollegeDatabase read() throws IOException {
-		Scanner input = new Scanner(file);
-		CollegeDatabase database = new CollegeDatabase(25); 
-		while (input.hasNextLine()) {
-			String newLine = input.nextLine();
-			database.add(parsePerson(newLine));
+		if (file.exists() && file.canRead()) {
+			Scanner input = new Scanner(file);
+			CollegeDatabase database = new CollegeDatabase(25); 
+			while (input.hasNextLine()) {
+				String newLine = input.nextLine();
+				database.add(parsePerson(newLine));
+			}
+			input.close();
+			
+			return database;
 		}
-		input.close();
-		return database;
+		else {
+			System.out.println("The file you specified is invalid, please enter a correct filePath and try again (enter 'q' to quit).");
+			String response = keyboard.next();
+			if (!response.equalsIgnoreCase("q")) {
+				setFile(response);
+				return read();	
+			}
+			else {
+				throw new IOException("Read error: chose not to give valid file path.");
+			}
+
+		}
 	}
 
 	/*******************************************************************************
@@ -88,12 +106,20 @@ public class DatabaseStorage {
 	public void write(CollegeDatabase data) throws IOException {
 		PrintStream writer = new PrintStream(file);
 		
-		if (file.exists()) {
+		if (file.exists() && file.canWrite()) {
 			writer.println(data.toString() + "\n");
 		}
 		else {
 			writer.close();
-			throw new IOException("File invalid, cannot write to invalid file.");
+			System.out.println("The file you specified is invalid, please enter a correct filePath and try again (enter 'q' to quit).");
+			String response = keyboard.next();
+			if (!response.equalsIgnoreCase("q")) {
+				setFile(response);
+				write(data);	
+			}
+			else {
+				throw new IOException("Write error: chose not to give valid file path.");
+			}
 		}
 		writer.close();
 	}
