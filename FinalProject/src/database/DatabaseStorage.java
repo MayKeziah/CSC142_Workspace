@@ -145,6 +145,9 @@ public class DatabaseStorage {
 			for (int i = 0; i < data.getSize(); i++) {
 				writer.println(data.get(i).toFile() + ", ");
 			}
+<<<<<<< HEAD
+>>>>>>> parent of 1bba8b6... writeCommaSeparated DatabaseStorage simplified
+=======
 >>>>>>> parent of 1bba8b6... writeCommaSeparated DatabaseStorage simplified
 		}
 		else {
