@@ -112,7 +112,11 @@ public class DatabaseStorage {
 		
 		if (file.exists() && file.canWrite()) {
 			for (int i = 0; i < data.getSize(); i++) {
-				writer.println(data.get(i).toString());
+				String[] thisData = data.get(i).toString().split("\n");
+				for (int j = 0; j < thisData.length; j++) {
+					writer.println(thisData[j]);
+
+				}
 			}
 		}
 		else {
