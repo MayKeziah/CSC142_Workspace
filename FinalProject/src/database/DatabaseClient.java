@@ -34,39 +34,9 @@ public class DatabaseClient {
 		DatabaseStorage input = new DatabaseStorage(fileLocation1);
 		CollegeDatabase database = input.read();
 		DatabaseStorage output = new DatabaseStorage(fileLocation2);
-//		CollegeDatabase myTest = output.read();
-//		myTest.print();
-//		database.print();
-//		database.separate("Employee").print();
-		CollegeDatabase test1 = database.separate(PersonType.STUDENT, 3.0, Operator.OVER);
-//		database.deleteDatabase(test1);
-//		CollegeDatabase test2 = database.separate(PersonType.STUDENT);
-		System.out.println("X X X X X X X X X X X X X X X X X");
-//		test1.add(test2);
-//		Person y = test1.pop("Jessica Flack");
-		test1.print();
-//		System.out.println(y.toString());
-//		database.separate(20).print();
-//		CollegeDatabase myTest = database.separate(PersonType.EMPLOYEE, 58000.0, Operator.OVER);
-//		Person tryMe = myTest.pop("Jessup Wingo");
-//		myTest.printCommaSeparated();
-//		System.out.println(tryMe.toFile());
-//		System.out.println(Arrays.toString(database.getDatabase()));
-//		System.out.println(database.getSize());
-//		Person myGuy = database.search("Holden Leuty");
-//		int guySpot = database.findLocation("Holden Leuty");
-//		System.out.println("Location: " + guySpot);
-//		System.out.println(database.get(guySpot).toString());
-//		System.out.println(myGuy.toString());
-//		System.out.println("HHHHH\n" + Arrays.toString(database.getDatabase()));
-		
-//		output.writeCommaSeperated(test1);
-//		output.write(test1);
-//		database.separate(20, "over").print();
-		/*
-		 * NEXT: Correct / add headers as needed
-		 * Then continue testing
-		 */
+		CollegeDatabase newData = database.separate(PersonType.EMPLOYEE);
+		output.writeCommaSeperated(newData);
+
 	}
 
 }

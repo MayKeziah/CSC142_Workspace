@@ -271,7 +271,7 @@ public class CollegeDatabase implements Database{
 			return entry[index];
 		}
 		else{
-			System.out.println(index + "is not a valid index. PERSON_NOT_FOUND.");
+			System.out.println(index + " is not a valid index. PERSON_NOT_FOUND.");
 			return PERSON_NOT_FOUND;
 		}
 	}

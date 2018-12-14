@@ -132,16 +132,17 @@ public class DatabaseStorage {
 	 * 				in the database to the current file. 							
 	 *******************************************************************************/
 	public void writeCommaSeperated(CollegeDatabase data) throws IOException {
-		PrintStream writer = new PrintStream(file);
 		
-		if (file.exists()) {
-				writer.println(data.toFile());
+		if (file.exists() && file.canWrite()) {
+			PrintStream writer = new PrintStream(file);
+			for (int i = 0; i < data.getSize(); i++) {
+				writer.println(data.get(i).toFile());
+			}
+			writer.close();
 		}
 		else {
-			writer.close();
 			throw new IOException("Output Exception, output file does not exist.");
 		}
-		writer.close();
 	}
 }
 
