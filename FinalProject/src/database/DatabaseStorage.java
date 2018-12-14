@@ -27,7 +27,7 @@ public class DatabaseStorage {
 	public DatabaseStorage() {}
 	
 	//Sets file to be at the specified location with the specified name.
-	public DatabaseStorage(String filePath) {
+	public DatabaseStorage(String filePath) throws IOException {
 		setFile(filePath);
 	}
 	
@@ -93,8 +93,12 @@ public class DatabaseStorage {
 	 * 				Creates a new File object using the file path and sets 
 	 * 				the file data field equal to it.						
 	 *******************************************************************************/
-	public void setFile(String filePath) {
+	public void setFile(String filePath) throws IOException{
 		file = new File(filePath);
+		if (!file.exists()) {
+			file = null;
+			throw new IOException("O/I Error: Invalid file path.");
+		}
 	}
 
 	/*******************************************************************************

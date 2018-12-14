@@ -268,11 +268,11 @@ public class CollegeDatabase implements Database{
 	 **************************************************************************/
 	public Person get(int index) {
 		if ((index < 0) || (index >= size)) {
-			return entry[index];
-		}
-		else{
 			System.out.println(index + " is not a valid index. PERSON_NOT_FOUND.");
 			return PERSON_NOT_FOUND;
+		}
+		else{
+			return entry[index];
 		}
 	}
 
