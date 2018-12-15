@@ -132,6 +132,16 @@ public class DatabaseClient {
 		
 		System.out.println("\nProof that my program can separate a database into a database of Students with GPA's under 2.0:");
 		System.out.println(database.separate(PersonType.STUDENT, 2.0, Operator.UNDER).toFile());
+		
+		System.out.println("\nProof that my program can separate a database into a database of Students with GPA's under 3.0:");
+		System.out.println(database.separate(PersonType.STUDENT, 3.0, Operator.UNDER).toFile());
+		
+		System.out.println("\nProof that my program can separate a database into a database of Students under 25-years-old:");
+		System.out.println(database.separate(PersonType.STUDENT).separate(25, Operator.UNDER).toFile());
+		
+		System.out.println("____________________________________________________________________________________");
+
+		
 //		DatabaseStorage output = new DatabaseStorage(fileLocation2);
 //		CollegeDatabase newData = database.separate(PersonType.EMPLOYEE);
 //		output.write(newData);
