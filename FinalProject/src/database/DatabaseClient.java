@@ -141,10 +141,14 @@ public class DatabaseClient {
 		
 		System.out.println("____________________________________________________________________________________");
 
+		System.out.println("\nWrite test:");
+		System.out.println("\nProof that my program can write to a file in a formated way for a user, see fileLocation2 (please set path before testing)");
+		DatabaseStorage output = new DatabaseStorage(fileLocation2);
+		output.write(database);
 		
-//		DatabaseStorage output = new DatabaseStorage(fileLocation2);
-//		CollegeDatabase newData = database.separate(PersonType.EMPLOYEE);
-//		output.write(newData);
+		System.out.println("____________________________________________________________________________________");
+		System.out.println("____________________________________________________________________________________");
+
 
 	}
 
