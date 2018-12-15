@@ -10,7 +10,7 @@ import people.Student;
  * 		CollegeDatabase Class: 												
  * 			This class will maintain a database of people that are members 
  * 			of a college. This class is implemented using an array and 
- * 			Imports Person class.								
+ * 			Imports Scanner, Person, Student, and Employee classes.								
  ******************************************************************************/
 public class CollegeDatabase implements Database{
 	//An array that holds Person objects. New entries are added to the next available position
@@ -77,10 +77,8 @@ public class CollegeDatabase implements Database{
 		}
 		else {
 			System.out.println("\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n"
-					+ "Add method failed to execute, name already exists. "
-					+ "\nThe following person was NOT added to the database:\n" + person.toString() 
-					+ "END ADD METHOD FAILED MESSEGE"
-					+ "\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
+					+ "Name already exists, could NOT add to database:\n" + person.toFile()
+					+ "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n");
 		}
 	}
 	
