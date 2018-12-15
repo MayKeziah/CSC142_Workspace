@@ -112,15 +112,22 @@ public class CollegeDatabase implements Database{
 	 **************************************************************************/
 	
 	private void byGPA(double GPA, Operator operator) {
-		for (int i = 0; i < size; i++) {
+		int i = 0;
+		while (i < size) {
 			if (operator == Operator.OVER){
 				if (((Student)entry[i]).getGPA() <= GPA) {
 					delete(i);
+				}
+				else {
+					i++;
 				}
 			}
 			else if (operator == Operator.UNDER) {
 				if (((Student)entry[i]).getGPA() >= GPA) {
 					delete(i);
+				}
+				else {
+					i++;
 				}
 			}
 		}
@@ -138,15 +145,22 @@ public class CollegeDatabase implements Database{
 	 * 			Returns the new college database.
 	 **************************************************************************/
 	private void bySalary(double salary, Operator operator) {
-		for (int i = 0; i < size; i++) {
+		int i = 0;
+		while (i < size) {
 			if (operator == Operator.OVER){
 				if (((Employee)entry[i]).getSalary() <= salary) {
 					delete(i);
+				}
+				else {
+					i++;
 				}
 			}
 			else if (operator == Operator.UNDER) {
 				if (((Employee)entry[i]).getSalary() >= salary) {
 					delete(i);
+				}
+				else {
+					i++;
 				}
 			}
 		}

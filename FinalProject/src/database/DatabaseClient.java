@@ -112,8 +112,26 @@ public class DatabaseClient {
 		System.out.println(database.toFile());
 		System.out.println("____________________________________________________________________________________");
 
-
+		System.out.println("\nSeparation criteria tests:");
 		
+		System.out.println("\nEmployee Separation tests:");
+		
+		System.out.println("\nProof that my program can separate a database into a database of Employees:");
+		System.out.println(database.separate(PersonType.EMPLOYEE).toFile());
+
+		System.out.println("\nProof that my program can separate a database into a database of Employees with salaries over $55,000.00:");
+		System.out.println(database.separate(PersonType.EMPLOYEE, 55000.00, Operator.OVER).toFile());
+		
+		System.out.println("\nProof that my program can separate a database into a database of Employees over 40-years-old:");
+		System.out.println(database.separate(PersonType.EMPLOYEE).separate(40, Operator.OVER).toFile());
+		
+		System.out.println("\nStudent Separation tests:");
+		
+		System.out.println("\nProof that my program can separate a database into a database of Students:");
+		System.out.println(database.separate(PersonType.STUDENT).toFile());
+		
+		System.out.println("\nProof that my program can separate a database into a database of Students with GPA's under 2.0:");
+		System.out.println(database.separate(PersonType.STUDENT, 2.0, Operator.UNDER).toFile());
 //		DatabaseStorage output = new DatabaseStorage(fileLocation2);
 //		CollegeDatabase newData = database.separate(PersonType.EMPLOYEE);
 //		output.write(newData);
