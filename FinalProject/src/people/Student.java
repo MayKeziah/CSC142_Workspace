@@ -21,7 +21,7 @@ public class Student extends Person {
 	public Student(Person person, Status status, double GPA) {
 		super(person);
 		this.status = status;
-		this.GPA = GPA;
+		setGPA(GPA);
 	}
 
 	//data fields passed as parameters
@@ -50,11 +50,8 @@ public class Student extends Person {
 		if (GPA >= 2.0) {
 			return false;
 		}
-		else if (GPA >= 0) {
-			return true;
-		}
 		else {
-			throw new IllegalArgumentException("Invalid GPA, please correct GPA value and try again");
+			return true;
 		}
 	}
 	
@@ -105,7 +102,12 @@ public class Student extends Person {
 	 * 			Data field setters													
 	 ********************************************************************/
 	public void setGPA(double GPA) {
-		this.GPA = GPA;
+		if (GPA >= 0) {
+			this.GPA = GPA;
+		}
+		else {
+			System.out.println("Invalid GPA: " + GPA);
+		}
 	}
 	public void setStatus(Status status) {
 		this.status = status;

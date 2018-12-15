@@ -146,6 +146,7 @@ public class DatabaseClient {
 		System.out.println("\nProof that my program can write to a file in a formated way for a user, see fileLocation2 (please set path before testing)");
 		DatabaseStorage output = new DatabaseStorage(fileLocation2);
 		output.write(database);
+		database.print();
 		
 		System.out.println("____________________________________________________________________________________");
 		System.out.println("____________________________________________________________________________________");
