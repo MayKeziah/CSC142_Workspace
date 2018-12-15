@@ -97,13 +97,20 @@ public class DatabaseClient {
 				 + "\n");
 		System.out.println(database.toFile());
 		
-		System.out.println("\nProof that my program can delete a person at the beginning of the database:");
+		System.out.println("\nProof that my program can delete a person at the end of the database:");
 		System.out.println("DELETE PERSON AT '(database size) - 1' INDEX:\t" + database.get(database.getSize() - 1).toFile());
 		System.out.println("Deletion Successful: " 
 						 + database.delete( database.get(database.getSize() - 1).getName() )
 						 + "\n");
 		System.out.println(database.toFile());
 
+		System.out.println("\nProof that my delete() method can handle a Person not in the database:");
+		System.out.println("DELETE PERSON THAT DOES NOT EXIST:\t" + database.search("Keturah Rahel").toFile());
+		System.out.println("Deletion Successful: " 
+						 + database.delete("Keturah Rahel")
+						 + "\n");
+		System.out.println(database.toFile());
+		System.out.println("____________________________________________________________________________________");
 
 
 		

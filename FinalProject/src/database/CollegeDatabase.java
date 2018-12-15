@@ -185,13 +185,14 @@ public class CollegeDatabase implements Database{
 	public boolean delete(String name) {
 		int index = this.findLocation(name);
 		if(index == -1) {
-			System.out.println("\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" 
+			System.out.println("\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n" 
 							 + "Person not found in database, could not delete " + name + "."
-							 + "\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n"
+							 + "\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n"
 							 + "\nPlease try again.\t\t(Enter 'q' to quit)");
-			if (keyboard.next() != "q") {
-				System.out.println("Name of person to delete: ");
-				return this.delete(keyboard.next());
+			System.out.println("Name of person to delete: ");
+			String newName = keyboard.nextLine();
+			if (!newName.equals("q")) {
+				return this.delete(newName);
 			}
 		}
 		return this.delete(index);
