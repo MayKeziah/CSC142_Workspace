@@ -3,13 +3,13 @@
 <fullyQualifiedTypeName name="people.Status"/>
 <fullyQualifiedTypeName name="java.lang.Math"/>
 <fullyQualifiedTypeName name="javafx.scene.media.MediaPlayer.Status"/>
-<fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="people.Student"/>
 <fullyQualifiedTypeName name="database.CollegeDatabase.Operator"/>
 <fullyQualifiedTypeName name="database.CollegeDatabase.PersonType"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="people.Person"/>
-<fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="people.Employee"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.io.File"/>
 </qualifiedTypeNameHistroy>
