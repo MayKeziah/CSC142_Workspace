@@ -9,7 +9,7 @@ public class TestStuff {
 //		int[] a2 = {1, 1, 2, 3, 5, 8, 13, 21};
 //		mystery(a1, a2);
 //		halfCaps();
-		int[] myList = {1, 1, 2, 3, 3, 3, 4, 4, 4, 5};
+		int[] myList = {-3, 1, 4, 4, 4, 6, 7, 8, 8, 8, 8, 9, 11, 11, 11, 12, 14, 14};
 //		counter();
 		System.out.println(mode(myList));
 	}
@@ -20,29 +20,37 @@ public class TestStuff {
 		int currentValue = myList[0];
 		int currentCount = 1;
 		int uniqueValueCount = 0;
-		int toReturn;
+		int highestCount;
+		int toReturn = currentValue;
+		if (length == 1) {
+			return toReturn;
+		}
 		for (int i = 1; i < length; i++) {
 			if (currentValue == myList[i]) {
 				currentCount++;
 			}
+			if(i == length - 1) {
+				myNewList[uniqueValueCount][0] = currentCount;
+				myNewList[uniqueValueCount][1] = currentValue;
+			}
 			else {
-				
 				myNewList[uniqueValueCount][0] = currentCount;
 				myNewList[uniqueValueCount][1] = currentValue;
 				uniqueValueCount++;
 				currentValue = myList[i];
-				currentCount = 1;
-				if(i == length - 1) {
-					myNewList[uniqueValueCount][0] = currentCount;
-					myNewList[uniqueValueCount][1] = currentValue;
-				}
+				currentCount = 1;	
 			}
 		}
-		for (int k = 0; k <= uniqueValueCount; k++) {
-			System.out.println(Arrays.toString(myNewList[k]));
-			
+		highestCount = myNewList[0][0];
+		toReturn = myNewList[0][1];
+		for (int k = 1; k <= uniqueValueCount; k++) {
+			if(highestCount >= myNewList[k][0]) {}
+			else {
+				highestCount = myNewList[k][0];
+				toReturn = myNewList[k][1];
+			}
 		}
-		return 1;
+		return toReturn;
 	}
 	public static void counter() throws FileNotFoundException {
 		String fileLocation2 = 
